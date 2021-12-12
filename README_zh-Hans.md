@@ -4,7 +4,7 @@
 
 ## LibDriver SPS30
 
-[English](/README.md) | [ 简体中文](/README_CH.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
 
 SPS30颗粒物（PM）传感器是光学PM传感器的技术突破。其测量原理基于激光散射，并利用了Sensirion创新的抗污染技术。这项技术，加上高质量和持久耐用的组件，使精确测量从第一次运行，并在整个生命周期超过十年。此外，Sensirion的先进算法为不同PM类型和更高分辨率的颗粒尺寸分类提供了更高的精度，为检测不同种类的环境粉尘和其他颗粒开辟了新的可能性。尺寸仅为41 x 41 x 12 mm3，对于尺寸至关重要的应用，如壁挂式或紧凑型空气质量设备，它也是完美的解决方案。
 
@@ -174,7 +174,7 @@ return sps30_basic_deinit();
 
 ### 版权
 
-版权(C) LibDriver 2015-2021 版权所有
+版权 (c) 2015 - 现在 LibDriver 版权所有
 
 MIT 许可证（MIT）
 
