@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver SPS30
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/sps30/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 SPS30顆粒物（PM）傳感器是光學PM傳感器的技術突破。其測量原理基於激光散射，並利用了Sensirion創新的抗污染技術。這項技術，加上高質量和持久耐用的組件，使精確測量從第一次運行，並在整個生命週期超過十年。此外，Sensirion的先進算法為不同PM類型和更高分辨率的顆粒尺寸分類提供了更高的精度，為檢測不同種類的環境粉塵和其他顆粒開闢了新的可能性。尺寸僅為41 x 41 x 12 mm3，對於尺寸至關重要的應用，如壁掛式或緊湊型空氣質量設備，它也是完美的解決方案。
 
