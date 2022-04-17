@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SPS30_READ_TEST_H_
-#define _DRIVER_SPS30_READ_TEST_H_
+#ifndef DRIVER_SPS30_READ_TEST_H
+#define DRIVER_SPS30_READ_TEST_H
 
 #include "driver_sps30_interface.h"
 

@@ -49,13 +49,13 @@ static sps30_handle_t gs_handle;        /**< sps30 handle */
  */
 uint8_t sps30_register_test(sps30_interface_t interface)
 {
-    volatile uint8_t res;
-    volatile uint32_t second, second_check;
-    volatile char type[9];
-    volatile char sn[17];
-    volatile uint8_t major;
-    volatile uint8_t minor;
-    volatile uint32_t status;
+    uint8_t res;
+    uint32_t second, second_check;
+    char type[9];
+    char sn[17];
+    uint8_t major;
+    uint8_t minor;
+    uint32_t status;
     sps30_info_t info;
     sps30_interface_t interface_check;
     sps30_data_ready_flag_t flag;
@@ -76,7 +76,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* get information */
     res = sps30_info(&info);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: get info failed.\n");
        
@@ -104,7 +104,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* set iic interface */
     res = sps30_set_interface(&gs_handle, SPS30_INTERFACE_IIC);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set interface failed.\n");
     
@@ -112,7 +112,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     }
     sps30_interface_debug_print("sps30: set interface iic.\n");
     res = sps30_get_interface(&gs_handle, &interface_check);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("gps30: set interface failed.\n");
     
@@ -122,7 +122,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* set uart interface */
     res = sps30_set_interface(&gs_handle, SPS30_INTERFACE_UART);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set interface failed.\n");
     
@@ -130,7 +130,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     }
     sps30_interface_debug_print("sps30: set interface uart.\n");
     res = sps30_get_interface(&gs_handle, &interface_check);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("gps30: set interface failed.\n");
     
@@ -140,7 +140,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* set the interface */
     res = sps30_set_interface(&gs_handle, interface);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set interface failed.\n");
     
@@ -149,7 +149,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* init the chip */
     res = sps30_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: init failed.\n");
     
@@ -157,23 +157,23 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     }
     
     /* sps30_set_auto_cleaning_interval/sps30_get_auto_cleaning_interval test */
-    res = sps30_interface_debug_print("sps30: sps30_set_auto_cleaning_interval/sps30_get_auto_cleaning_interval test.\n");
+    sps30_interface_debug_print("sps30: sps30_set_auto_cleaning_interval/sps30_get_auto_cleaning_interval test.\n");
     
     second = rand() % 65536 + 65536;
     res = sps30_set_auto_cleaning_interval(&gs_handle, second);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set auto cleaning interval failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
     sps30_interface_debug_print("sps30: set auto cleaning interval %d.\n", second);
     res = sps30_get_auto_cleaning_interval(&gs_handle, (uint32_t *)&second_check);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: get auto cleaning interval failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -182,10 +182,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_disable_auto_cleaning_interval test */
     sps30_interface_debug_print("sps30: sps30_disable_auto_cleaning_interval test.\n");
     res = sps30_disable_auto_cleaning_interval(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: disable auto cleaning interval failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -194,18 +194,18 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_start_fan_cleaning test */
     sps30_interface_debug_print("sps30: sps30_start_fan_cleaning test.\n");
     res = sps30_start_measurement(&gs_handle, SPS30_FORMAT_IEEE754);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: start measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
     res = sps30_start_fan_cleaning(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: start fan cleaning failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -214,10 +214,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     sps30_interface_delay_ms(1000 * 10);
     sps30_interface_debug_print("sps30: check fan cleaning %s.\n", res == 0 ? "ok" : "error");
     res = sps30_stop_measurement(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: stop measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -225,10 +225,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_get_product_type test */
     sps30_interface_debug_print("sps30: sps30_get_product_type test.\n");
     res = sps30_get_product_type(&gs_handle, (char *)type);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: get product type failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -237,10 +237,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_get_serial_number test */
     sps30_interface_debug_print("sps30: sps30_get_serial_number test.\n");
     res = sps30_get_serial_number(&gs_handle, (char *)sn);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: get serial number failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -249,10 +249,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_get_version test */
     sps30_interface_debug_print("sps30: sps30_get_version test.\n");
     res = sps30_get_version(&gs_handle, (uint8_t *)&major, (uint8_t *)&minor);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: get version failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -261,10 +261,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_get_device_status test */
     sps30_interface_debug_print("sps30: sps30_get_device_status test.\n");
     res = sps30_get_device_status(&gs_handle, (uint32_t *)&status);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: sps30 get device status failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -273,10 +273,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_clear_device_status test */
     sps30_interface_debug_print("sps30: sps30_clear_device_status test.\n");
     res = sps30_clear_device_status(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: clear device status failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -288,10 +288,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
         /* sps30_read_data_flag test */
         sps30_interface_debug_print("sps30: sps30_read_data_flag test.\n");
         res = sps30_read_data_flag(&gs_handle, &flag);
-        if (res)
+        if (res != 0)
         {
             sps30_interface_debug_print("sps30: sps30 read data flag failed.\n");
-            sps30_deinit(&gs_handle);
+            (void)sps30_deinit(&gs_handle);
             
             return 1;
         }
@@ -303,10 +303,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* start measurement */
     res = sps30_start_measurement(&gs_handle, SPS30_FORMAT_IEEE754);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: start measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -315,10 +315,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* stop measurement */
     res = sps30_stop_measurement(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: stop measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -327,10 +327,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     /* sps30_sleep test */
     sps30_interface_debug_print("sps30: sps30_sleep test.\n");
     res = sps30_sleep(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: sleep failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -340,10 +340,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     sps30_interface_debug_print("sps30: sps30_wake_up test.\n");
     sps30_interface_delay_ms(1000);
     res = sps30_wake_up(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: wake up failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -353,10 +353,10 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     sps30_interface_debug_print("sps30: sps30_reset test.\n");
     sps30_interface_delay_ms(1000);
     res = sps30_reset(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: reset failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -364,7 +364,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     
     /* finish register test */
     sps30_interface_debug_print("sps30: finish register test.\n");
-    sps30_deinit(&gs_handle);
+    (void)sps30_deinit(&gs_handle);
     
     return 0;
 }

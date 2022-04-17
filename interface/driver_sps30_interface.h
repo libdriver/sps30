@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SPS30_INTERFACE_H_
-#define _DRIVER_SPS30_INTERFACE_H_
+#ifndef DRIVER_SPS30_INTERFACE_H
+#define DRIVER_SPS30_INTERFACE_H
 
 #include "driver_sps30.h"
 
@@ -151,10 +151,9 @@ void sps30_interface_delay_ms(uint32_t ms);
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t sps30_interface_debug_print(char *fmt, ...);
+void sps30_interface_debug_print(const char *const fmt, ...);
 
 /**
  * @}
