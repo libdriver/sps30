@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver SPS30
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/sps30/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/sps30/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 SPS30顆粒物（PM）傳感器是光學PM傳感器的技術突破。其測量原理基於激光散射，並利用了Sensirion創新的抗污染技術。這項技術，加上高質量和持久耐用的組件，使精確測量從第一次運行，並在整個生命週期超過十年。此外，Sensirion的先進算法為不同PM類型和更高分辨率的顆粒尺寸分類提供了更高的精度，為檢測不同種類的環境粉塵和其他顆粒開闢了新的可能性。尺寸僅為41 x 41 x 12 mm3，對於尺寸至關重要的應用，如壁掛式或緊湊型空氣質量設備，它也是完美的解決方案。
 
-LibDriver SPS30是LibDriver推出的SPS30的全功能驅動，該驅動提供空氣質量讀取、自動清理配置和ID讀取等功能。
+LibDriver SPS30是LibDriver推出的SPS30的全功能驅動，該驅動提供空氣質量讀取、自動清理配置和ID讀取等功能並且它符合MISRA標準。
 
 ### 目錄
 
@@ -50,15 +50,15 @@ LibDriver SPS30是LibDriver推出的SPS30的全功能驅動，該驅動提供空
 #### example basic
 
 ```C
-volatile uint8_t res;
-volatile uint32_t i;
-volatile uint8_t major, minor;
-volatile uint32_t status;
-volatile char type[9];
-volatile char sn[9];
+uint8_t res;
+uint32_t i;
+uint8_t major, minor;
+uint32_t status;
+char type[9];
+char sn[9];
 
 res = sps30_basic_init(SPS30_INTERFACE_UART);
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -70,9 +70,9 @@ sps30_interface_delay_ms(2000);
 
 /* get type */
 res = sps30_basic_get_product_type((char *)type);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -80,9 +80,9 @@ sps30_interface_debug_print("sps30: type is %s.\n", type);
 
 /* get sn */
 res = sps30_basic_get_serial_number((char *)sn);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -90,9 +90,9 @@ sps30_interface_debug_print("sps30: sn is %s.\n", sn);
 
 /* get version */
 res = sps30_basic_get_version((uint8_t *)&major, (uint8_t *)&minor);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -100,9 +100,9 @@ sps30_interface_debug_print("sps30: major is 0x%02X minor is 0x%02X.\n", major, 
 
 /* get status */
 res = sps30_basic_get_status((uint32_t *)&status);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -114,9 +114,9 @@ sps30_interface_debug_print("sps30: start cleaning.\n");
 
 /* start fan cleaning */
 res = sps30_basic_start_fan_cleaning();
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -132,9 +132,9 @@ for (i = 0; i < 3; i++)
 
     /* read data */
     res = sps30_basic_read(&pm);
-    if (res)
+    if (res != 0)
     {
-        sps30_basic_deinit();
+        (void)sps30_basic_deinit();
 
         return 1;
     }
@@ -161,7 +161,9 @@ for (i = 0; i < 3; i++)
 
 ...
 
-return sps30_basic_deinit();
+(void)sps30_basic_deinit();
+
+return 0;
 ```
 
 ### 文檔

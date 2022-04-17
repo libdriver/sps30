@@ -2,7 +2,7 @@ var group__sps30__basic__driver =
 [
     [ "sps30_handle_s", "structsps30__handle__s.html", [
       [ "buf", "structsps30__handle__s.html#a210548e128eebd5bcd2ffb465d8d1cf5", null ],
-      [ "debug_print", "structsps30__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2", null ],
+      [ "debug_print", "structsps30__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
       [ "delay_ms", "structsps30__handle__s.html#a406c9433252b7366de417b7a60915c81", null ],
       [ "format", "structsps30__handle__s.html#a7864fd50d470f893524181b4a59d9828", null ],
       [ "iic_deinit", "structsps30__handle__s.html#af6963bbad902ca6e43942b48c07986c3", null ],

@@ -49,8 +49,8 @@ static sps30_handle_t gs_handle;        /**< sps30 handle */
  */
 uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
 {
-    volatile uint8_t res;
-    volatile uint32_t i;
+    uint8_t res;
+    uint32_t i;
     sps30_info_t info;
     sps30_pm_t pm;
     
@@ -70,7 +70,7 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* get information */
     res = sps30_info(&info);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: get info failed.\n");
        
@@ -95,7 +95,7 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* set the interface */
     res = sps30_set_interface(&gs_handle, interface);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set interface failed.\n");
     
@@ -104,7 +104,7 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* init the chip */
     res = sps30_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: init failed.\n");
     
@@ -113,10 +113,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* set auto cleaning interval */
     res = sps30_set_auto_cleaning_interval(&gs_handle, 3600 * 24);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set auto cleaning interval failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -126,10 +126,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* start measurement */
     res = sps30_start_measurement(&gs_handle, SPS30_FORMAT_IEEE754);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: start measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -140,10 +140,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     for (i = 0; i < times; i++)
     {
         res = sps30_read(&gs_handle, &pm);
-        if (res)
+        if (res != 0)
         {
             sps30_interface_debug_print("sps30: read failed.\n");
-            sps30_deinit(&gs_handle);
+            (void)sps30_deinit(&gs_handle);
             
             return 1;
         }
@@ -164,10 +164,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* stop measurement */
     res = sps30_stop_measurement(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: stop measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -180,10 +180,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* start measurement */
     res = sps30_start_measurement(&gs_handle, SPS30_FORMAT_UINT16);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: start measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -194,10 +194,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     for (i = 0; i < times; i++)
     {
         res = sps30_read(&gs_handle, &pm);
-        if (res)
+        if (res != 0)
         {
             sps30_interface_debug_print("sps30: read failed.\n");
-            sps30_deinit(&gs_handle);
+            (void)sps30_deinit(&gs_handle);
             
             return 1;
         }
@@ -219,10 +219,10 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* stop measurement */
     res = sps30_stop_measurement(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: stop measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -232,7 +232,7 @@ uint8_t sps30_read_test(sps30_interface_t interface, uint32_t times)
     
     /* finish read test */
     sps30_interface_debug_print("sps30: finish read test.\n");
-    sps30_deinit(&gs_handle);
+    (void)sps30_deinit(&gs_handle);
     
     return 0;
 }

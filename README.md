@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver SPS30
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/sps30/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/sps30/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 The SPS30 Particulate Matter (PM) sensor is a technological breakthrough in optical PM sensors. Its measurement principle is based on laser scattering and makes use of Sensirion’s innovative contamination-resistance technology. This technology, together with high-quality and long-lasting components, enables precise measurements from its first operation and throughout its lifetime of more than ten years. In addition, Sensirion’s advanced algorithms provide superior precision for different PM types and higher-resolution particle size binning, opening up new possibilities for the detection of different sorts of environmental dust and other particles. With dimensions of only 41 x 41 x 12 mm3, it is also the perfect solution for applications where size is of paramount importance, such as wall-mounted or compact air quality devices.
 
-LibDriver SPS30 is the full function driver of SPS30 launched by LibDriver. It provides air quality reading, automatic cleaning configuration, ID reading and other functions.
+LibDriver SPS30 is the full function driver of SPS30 launched by LibDriver. It provides air quality reading, automatic cleaning configuration, ID reading and other functions. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
@@ -48,15 +48,15 @@ Reference /interface IIC,UART platform independent template and finish your plat
 #### example basic
 
 ```C
-volatile uint8_t res;
-volatile uint32_t i;
-volatile uint8_t major, minor;
-volatile uint32_t status;
-volatile char type[9];
-volatile char sn[9];
+uint8_t res;
+uint32_t i;
+uint8_t major, minor;
+uint32_t status;
+char type[9];
+char sn[9];
 
 res = sps30_basic_init(SPS30_INTERFACE_UART);
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -68,9 +68,9 @@ sps30_interface_delay_ms(2000);
 
 /* get type */
 res = sps30_basic_get_product_type((char *)type);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -78,9 +78,9 @@ sps30_interface_debug_print("sps30: type is %s.\n", type);
 
 /* get sn */
 res = sps30_basic_get_serial_number((char *)sn);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -88,9 +88,9 @@ sps30_interface_debug_print("sps30: sn is %s.\n", sn);
 
 /* get version */
 res = sps30_basic_get_version((uint8_t *)&major, (uint8_t *)&minor);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -98,9 +98,9 @@ sps30_interface_debug_print("sps30: major is 0x%02X minor is 0x%02X.\n", major, 
 
 /* get status */
 res = sps30_basic_get_status((uint32_t *)&status);
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -112,9 +112,9 @@ sps30_interface_debug_print("sps30: start cleaning.\n");
 
 /* start fan cleaning */
 res = sps30_basic_start_fan_cleaning();
-if (res)
+if (res != 0)
 {
-    sps30_basic_deinit();
+    (void)sps30_basic_deinit();
 
     return 1;
 }
@@ -130,9 +130,9 @@ for (i = 0; i < 3; i++)
 
     /* read data */
     res = sps30_basic_read(&pm);
-    if (res)
+    if (res != 0)
     {
-        sps30_basic_deinit();
+        (void)sps30_basic_deinit();
 
         return 1;
     }
@@ -159,7 +159,9 @@ for (i = 0; i < 3; i++)
 
 ...
 
-return sps30_basic_deinit();
+(void)sps30_basic_deinit();
+
+return 0;
 ```
 
 ### Document

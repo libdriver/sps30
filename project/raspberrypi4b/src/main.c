@@ -49,6 +49,7 @@
 #include "driver_sps30_basic.h"
 #include <stdlib.h>
 
+
 /**
  * @brief     sps30 full function
  * @param[in] argc is arg numbers
@@ -130,7 +131,7 @@ uint8_t sps30(uint8_t argc, char **argv)
             {
                 if (strcmp("-iic", argv[3]) == 0)
                 {
-                    if (sps30_register_test(SPS30_INTERFACE_IIC))
+                    if (sps30_register_test(SPS30_INTERFACE_IIC) != 0)
                     {
                         return 1;
                     }
@@ -141,7 +142,7 @@ uint8_t sps30(uint8_t argc, char **argv)
                 }
                 else if (strcmp("-uart", argv[3]) == 0)
                 {
-                    if (sps30_register_test(SPS30_INTERFACE_UART))
+                    if (sps30_register_test(SPS30_INTERFACE_UART) != 0)
                     {
                         return 1;
                     }
@@ -173,7 +174,7 @@ uint8_t sps30(uint8_t argc, char **argv)
             {
                 if (strcmp("-iic", argv[4]) == 0)
                 {
-                    if (sps30_read_test(SPS30_INTERFACE_IIC, atoi(argv[3])))
+                    if (sps30_read_test(SPS30_INTERFACE_IIC, atoi(argv[3])) != 0)
                     {
                         return 1;
                     }
@@ -184,7 +185,7 @@ uint8_t sps30(uint8_t argc, char **argv)
                 }
                 else if (strcmp("-uart", argv[4]) == 0)
                 {
-                    if (sps30_read_test(SPS30_INTERFACE_UART, atoi(argv[3])))
+                    if (sps30_read_test(SPS30_INTERFACE_UART, atoi(argv[3])) != 0)
                     {
                         return 1;
                     }
@@ -211,18 +212,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                 {
                     if (strcmp("-iic", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile char type[9];
+                        uint8_t res;
+                        char type[9];
                         
                         res = sps30_basic_init(SPS30_INTERFACE_IIC);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_product_type((char *)type);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -234,18 +235,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                     }
                     else if (strcmp("-uart", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile char type[9];
+                        uint8_t res;
+                        char type[9];
                         
                         res = sps30_basic_init(SPS30_INTERFACE_UART);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_product_type((char *)type);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -264,18 +265,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                 {
                     if (strcmp("-iic", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile char sn[9];
+                        uint8_t res;
+                        char sn[9];
                         
                         res = sps30_basic_init(SPS30_INTERFACE_IIC);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_serial_number((char *)sn);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -287,18 +288,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                     }
                     else if (strcmp("-uart", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile char sn[9];
+                        uint8_t res;
+                        char sn[9];
                         
                         res = sps30_basic_init(SPS30_INTERFACE_UART);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_serial_number((char *)sn);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -317,18 +318,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                 {
                     if (strcmp("-iic", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile uint8_t major, minor;
+                        uint8_t res;
+                        uint8_t major, minor;
                         
                         res = sps30_basic_init(SPS30_INTERFACE_IIC);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_version((uint8_t *)&major, (uint8_t *)&minor);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -340,18 +341,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                     }
                     else if (strcmp("-uart", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile uint8_t major, minor;
+                        uint8_t res;
+                        uint8_t major, minor;
                         
                         res = sps30_basic_init(SPS30_INTERFACE_UART);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_version((uint8_t *)&major, (uint8_t *)&minor);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -370,18 +371,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                 {
                     if (strcmp("-iic", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile uint32_t status;
+                        uint8_t res;
+                        uint32_t status;
                         
                         res = sps30_basic_init(SPS30_INTERFACE_IIC);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_status((uint32_t *)&status);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -393,18 +394,18 @@ uint8_t sps30(uint8_t argc, char **argv)
                     }
                     else if (strcmp("-uart", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile uint32_t status;
+                        uint8_t res;
+                        uint32_t status;
                         
                         res = sps30_basic_init(SPS30_INTERFACE_UART);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
                         res = sps30_basic_get_status((uint32_t *)&status);
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -423,10 +424,10 @@ uint8_t sps30(uint8_t argc, char **argv)
                 {
                     if (strcmp("-iic", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
+                        uint8_t res;
                         
                         res = sps30_basic_init(SPS30_INTERFACE_IIC);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
@@ -436,9 +437,9 @@ uint8_t sps30(uint8_t argc, char **argv)
                         
                         /* start fan cleaning */
                         res = sps30_basic_start_fan_cleaning();
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -451,10 +452,10 @@ uint8_t sps30(uint8_t argc, char **argv)
                     }
                     else if (strcmp("-uart", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
+                        uint8_t res;
                         
                         res = sps30_basic_init(SPS30_INTERFACE_UART);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
@@ -464,9 +465,9 @@ uint8_t sps30(uint8_t argc, char **argv)
                         
                         /* start fan cleaning */
                         res = sps30_basic_start_fan_cleaning();
-                        if (res)
+                        if (res != 0)
                         {
-                            sps30_basic_deinit();
+                            (void)sps30_basic_deinit();
                             
                             return 1;
                         }
@@ -507,12 +508,12 @@ uint8_t sps30(uint8_t argc, char **argv)
                 {
                     if (strcmp("-iic", argv[5]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile uint32_t i, times;
+                        uint8_t res;
+                        uint32_t i, times;
                         
                         times = atoi(argv[4]);
                         res = sps30_basic_init(SPS30_INTERFACE_IIC);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
@@ -526,9 +527,9 @@ uint8_t sps30(uint8_t argc, char **argv)
                             
                             /* read data */
                             res = sps30_basic_read(&pm);
-                            if (res)
+                            if (res != 0)
                             {
-                                sps30_basic_deinit();
+                                (void)sps30_basic_deinit();
                                 
                                 return 1;
                             }
@@ -554,12 +555,12 @@ uint8_t sps30(uint8_t argc, char **argv)
                     }
                     else if (strcmp("-uart", argv[5]) == 0)
                     {
-                        volatile uint8_t res;
-                        volatile uint32_t i, times;
+                        uint8_t res;
+                        uint32_t i, times;
                         
                         times = atoi(argv[4]);
                         res = sps30_basic_init(SPS30_INTERFACE_UART);
-                        if (res)
+                        if (res != 0)
                         {
                             return 1;
                         }
@@ -573,9 +574,9 @@ uint8_t sps30(uint8_t argc, char **argv)
                             
                             /* read data */
                             res = sps30_basic_read(&pm);
-                            if (res)
+                            if (res != 0)
                             {
-                                sps30_basic_deinit();
+                                (void)sps30_basic_deinit();
                                 
                                 return 1;
                             }

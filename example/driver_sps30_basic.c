@@ -48,7 +48,7 @@ static sps30_handle_t gs_handle;        /**< sps30 handle */
  */
 uint8_t sps30_basic_init(sps30_interface_t interface)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* link functions */
     DRIVER_SPS30_LINK_INIT(&gs_handle, sps30_handle_t);
@@ -66,7 +66,7 @@ uint8_t sps30_basic_init(sps30_interface_t interface)
     
     /* set the interface */
     res = sps30_set_interface(&gs_handle, interface);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set interface failed.\n");
     
@@ -75,7 +75,7 @@ uint8_t sps30_basic_init(sps30_interface_t interface)
     
     /* init the chip */
     res = sps30_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: init failed.\n");
     
@@ -84,20 +84,20 @@ uint8_t sps30_basic_init(sps30_interface_t interface)
     
     /* set auto cleaning interval */
     res = sps30_set_auto_cleaning_interval(&gs_handle, SPS30_BASIC_DEFAULT_AUTO_CLEANING_INTERVAL);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: set auto cleaning interval failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
 
     /* start measurement */
     res = sps30_start_measurement(&gs_handle, SPS30_BASIC_DEFAULT_FORMAT);
-    if (res)
+    if (res != 0)
     {
         sps30_interface_debug_print("sps30: start measurement failed.\n");
-        sps30_deinit(&gs_handle);
+        (void)sps30_deinit(&gs_handle);
         
         return 1;
     }
@@ -114,23 +114,19 @@ uint8_t sps30_basic_init(sps30_interface_t interface)
  */
 uint8_t sps30_basic_deinit(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* stop measurement */
     res = sps30_stop_measurement(&gs_handle);
-    if (res)
+    if (res != 0)
     {
-        sps30_interface_debug_print("sps30: stop measurement failed.\n");
-    
         return 1;
     }
     
     /* deinit */
     res = sps30_deinit(&gs_handle);
-    if (res)
+    if (res != 0)
     {
-        sps30_interface_debug_print("sps30: deinit failed.\n");
-    
         return 1;
     }
     
@@ -147,14 +143,12 @@ uint8_t sps30_basic_deinit(void)
  */
 uint8_t sps30_basic_read(sps30_pm_t *pm)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* read data */
     res = sps30_read(&gs_handle, pm);
-    if (res)
+    if (res != 0)
     {
-        sps30_interface_debug_print("sps30: read failed.\n");
-    
         return 1;
     }
     else
@@ -172,7 +166,7 @@ uint8_t sps30_basic_read(sps30_pm_t *pm)
  */
 uint8_t sps30_basic_start_fan_cleaning(void)
 {
-    if (sps30_start_fan_cleaning(&gs_handle))
+    if (sps30_start_fan_cleaning(&gs_handle) != 0)
     {
         return 1;
     }
@@ -191,7 +185,7 @@ uint8_t sps30_basic_start_fan_cleaning(void)
  */
 uint8_t sps30_basic_reset(void)
 {
-    if (sps30_reset(&gs_handle))
+    if (sps30_reset(&gs_handle) != 0)
     {
         return 1;
     }
@@ -210,7 +204,7 @@ uint8_t sps30_basic_reset(void)
  */
 uint8_t sps30_basic_sleep(void)
 {
-    if (sps30_sleep(&gs_handle))
+    if (sps30_sleep(&gs_handle) != 0)
     {
         return 1;
     }
@@ -229,7 +223,7 @@ uint8_t sps30_basic_sleep(void)
  */
 uint8_t sps30_basic_wake_up(void)
 {
-    if (sps30_wake_up(&gs_handle))
+    if (sps30_wake_up(&gs_handle) != 0)
     {
         return 1;
     }
@@ -249,7 +243,7 @@ uint8_t sps30_basic_wake_up(void)
  */
 uint8_t sps30_basic_get_product_type(char type[9])
 {
-    if (sps30_get_product_type(&gs_handle, type))
+    if (sps30_get_product_type(&gs_handle, type) != 0)
     {
         return 1;
     }
@@ -269,7 +263,7 @@ uint8_t sps30_basic_get_product_type(char type[9])
  */
 uint8_t sps30_basic_get_serial_number(char sn[17])
 {
-    if (sps30_get_serial_number(&gs_handle, sn))
+    if (sps30_get_serial_number(&gs_handle, sn) != 0)
     {
         return 1;
     }
@@ -290,7 +284,7 @@ uint8_t sps30_basic_get_serial_number(char sn[17])
  */
 uint8_t sps30_basic_get_version(uint8_t *major, uint8_t *minor)
 {
-    if (sps30_get_version(&gs_handle, major, minor))
+    if (sps30_get_version(&gs_handle, major, minor) != 0)
     {
         return 1;
     }
@@ -310,13 +304,13 @@ uint8_t sps30_basic_get_version(uint8_t *major, uint8_t *minor)
  */
 uint8_t sps30_basic_get_status(uint32_t *status)
 {
-    if (sps30_get_device_status(&gs_handle, status))
+    if (sps30_get_device_status(&gs_handle, status) != 0)
     {
         return 1;
     }
     else
     {
-        if (sps30_clear_device_status(&gs_handle))
+        if (sps30_clear_device_status(&gs_handle) != 0)
         {
             return 1;
         }

@@ -1,6 +1,6 @@
 var driver__sps30__interface__template_8c =
 [
-    [ "sps30_interface_debug_print", "group__sps30__interface__driver.html#ga1d857f905f6b1334d8f617824a81622d", null ],
+    [ "sps30_interface_debug_print", "group__sps30__interface__driver.html#ga6c1ca9f55514d68b1b37ea36a8aa0e89", null ],
     [ "sps30_interface_delay_ms", "group__sps30__interface__driver.html#ga7e35f3f652289d1b72d10f11c999f75b", null ],
     [ "sps30_interface_iic_deinit", "group__sps30__interface__driver.html#ga593f6899d7293418b404544c28755bd4", null ],
     [ "sps30_interface_iic_init", "group__sps30__interface__driver.html#ga877a09214af27f9c70839e50e298b90f", null ],

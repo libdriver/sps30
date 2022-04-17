@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SPS30_H_
-#define _DRIVER_SPS30_H_
+#ifndef DRIVER_SPS30_H
+#define DRIVER_SPS30_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -108,7 +108,7 @@ typedef struct sps30_handle_s
     uint8_t (*uart_flush)(void);                                              /**< point to a uart_flush function address */
     uint8_t (*uart_write)(uint8_t *buf, uint16_t len);                        /**< point to a uart_write function address */
     void (*delay_ms)(uint32_t ms);                                            /**< point to a delay_ms function address */
-    uint16_t (*debug_print)(char *fmt, ...);                                  /**< point to a debug_print function address */
+    void (*debug_print)(const char *const fmt, ...);                          /**< point to a debug_print function address */
     uint8_t inited;                                                           /**< inited flag */
     uint8_t iic_uart;                                                         /**< iic uart */
     uint8_t format;                                                           /**< format */
