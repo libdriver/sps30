@@ -26,15 +26,15 @@ LibDriver SPS30 ist der Treiber mit vollem Funktionsumfang von SPS30, der von Li
 
 /src enthält LibDriver SPS30-Quelldateien.
 
-/interface enthält die plattformunabhängige Vorlage LibDriver SPS30 IIC,UART。
+/interface enthält die plattformunabhängige Vorlage LibDriver SPS30 IIC,UART.
 
-/test enthält den Testcode des LibDriver SPS30-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver SPS30-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver SPS30-Beispielcode.
 
 /doc enthält das LibDriver SPS30-Offlinedokument.
 
-/Datenblatt enthält SPS30-Datenblatt。
+/Datenblatt enthält SPS30-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
