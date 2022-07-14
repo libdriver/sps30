@@ -2037,17 +2037,21 @@ uint8_t sps30_init(sps30_handle_t *handle)
         if (res != 0)                                                                                /* check result */
         {
             handle->debug_print("sps30: write read failed.\n");                                      /* write read failed */
-           
+            (void)handle->uart_deinit();                                                             /* uart deinit */
+            
             return 1;                                                                                /* return error */
         }
         if (out_buf[5] != a_sps30_generate_crc(handle, (uint8_t *)&out_buf[1], 4))                   /* check crc */
         {
             handle->debug_print("sps30: crc check error.\n");                                        /* crc check error */
-           
+            (void)handle->uart_deinit();                                                             /* uart deinit */
+            
             return 1;                                                                                /* return error */
         }
         if (a_sps30_uart_error(handle, out_buf[3]) != 0)                                             /* check status */
         {
+            (void)handle->uart_deinit();                                                             /* uart deinit */
+            
             return 1;                                                                                /* return error */
         }
     }
@@ -2063,7 +2067,8 @@ uint8_t sps30_init(sps30_handle_t *handle)
         if (res != 0)                                                                                /* check result */
         {
             handle->debug_print("sps30: reset failed.\n");                                           /* reset failed */
-           
+            (void)handle->iic_deinit();                                                              /* iic deinit */
+            
             return 4;                                                                                /* return error */
         }
     }
