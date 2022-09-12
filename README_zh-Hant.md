@@ -50,6 +50,8 @@ LibDriver SPS30是LibDriver推出的SPS30的全功能驅動，該驅動提供空
 #### example basic
 
 ```C
+#include "driver_sps30_basic.h"
+
 uint8_t res;
 uint32_t i;
 uint8_t major, minor;
