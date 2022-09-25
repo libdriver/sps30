@@ -1,6 +1,6 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
 chip name : STM32F407ZGT6.
 
@@ -12,23 +12,23 @@ iic pin: SCL/SDA PB8/PB9.
 
 uart2 pin:  TX/RX PA2/PA3.
 
-### 2. shell
+### 2. Shell
 
-#### 2.1 shell parameter
+#### 2.1 Shell Parameter
 
-baud rate: 115200
+baud rate: 115200.
 
-data bits : 8
+data bits : 8.
 
-stop bits: 1
+stop bits: 1.
 
-parity: none
+parity: none.
 
-flow control: none
+flow control: none.
 
-### 3. sps30
+### 3. SPS30
 
-#### 3.1 command Instruction
+#### 3.1 Command Instruction
 
 ​          sps30 is a basic command which can test all sps30 driver function:
 
@@ -57,6 +57,8 @@ flow control: none
 ​           -c basic version (-iic | -uart)        run sps30 basic get version function.  
 
 ​           -c basic status (-iic | -uart)        run sps30 basic get status function.  
+
+#### 3.2 Command Example
 
 ```shell
 sps30 -i

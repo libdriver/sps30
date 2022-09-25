@@ -1,30 +1,86 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
-chip name : Raspberry Pi 4B
+chip name : Raspberry Pi 4B.
 
-iic pin: SCL/SDA GPIO3/GPIO2
+iic pin: SCL/SDA GPIO3/GPIO2.
 
-uart pin: TX/RX GPIO14/GPIO15
+uart pin: TX/RX GPIO14/GPIO15.
 
-### 2. install
+### 2. Install
 
-#### 2.1 install info
+#### 2.1 Dependencies
+
+Install the necessary dependencies.
 
 ```shell
-make
+sudo apt-get install libgpiod-dev pkg-config cmake -y
 ```
-
-#### 2.2 configuration
+#### 2.2 Configuration
 
 Enable serial port.
 
 Disable serial console.
 
-### 3. sps30
+#### 2.3 Makefile
 
-#### 3.1 command Instruction
+Build the project.
+
+```shell
+make
+```
+
+Install the project and this is optional.
+
+```shell
+sudo make install
+```
+
+Uninstall the project and this is optional.
+
+```shell
+sudo make uninstall
+```
+
+#### 2.4 CMake
+
+Build the project.
+
+```shell
+mkdir build && cd build 
+cmake .. 
+make
+```
+
+Install the project and this is optional.
+
+```shell
+sudo make install
+```
+
+Uninstall the project and this is optional.
+
+```shell
+sudo make uninstall
+```
+
+Test the project and this is optional.
+
+```shell
+make test
+```
+
+Find the compiled library in CMake. 
+
+```cmake
+find_package(sps30 REQUIRED)
+```
+
+
+### 3. SPS30
+
+#### 3.1 Command Instruction
 
 ​          sps30 is a basic command which can test all sps30 driver function:
 
@@ -53,6 +109,8 @@ Disable serial console.
 ​           -c basic version (-iic | -uart)        run sps30 basic get version function.  
 
 ​           -c basic status (-iic | -uart)        run sps30 basic get status function.  
+
+#### 3.2 Command Example
 
 ```shell
 ./sps30 -i
