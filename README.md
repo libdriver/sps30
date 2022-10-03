@@ -27,15 +27,15 @@ LibDriver SPS30 is the full function driver of SPS30 launched by LibDriver. It p
 
 /src includes LibDriver SPS30 source files.
 
-/interface includes LibDriver SPS30 IIC,UART platform independent template。
+/interface includes LibDriver SPS30 IIC,UART platform independent template.
 
-/test includes LibDriver SPS30 driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver SPS30 driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver SPS30 sample code.
 
 /doc includes LibDriver SPS30 offline document.
 
-/datasheet includes SPS30 datasheet。
+/datasheet includes SPS30 datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
@@ -48,6 +48,8 @@ Reference /interface IIC,UART platform independent template and finish your plat
 #### example basic
 
 ```C
+#include "driver_sps30_basic.h"
+
 uint8_t res;
 uint32_t i;
 uint8_t major, minor;

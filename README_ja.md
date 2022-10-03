@@ -50,6 +50,8 @@ LibDriver SPS30は、LibDriverによって起動されたSPS30の全機能ドラ
 #### example basic
 
 ```C
+#include "driver_sps30_basic.h"
+
 uint8_t res;
 uint32_t i;
 uint8_t major, minor;
