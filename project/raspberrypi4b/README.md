@@ -2,7 +2,7 @@
 
 #### 1.1 Board Info
 
-Chip Name: Raspberry Pi 4B.
+Board Name: Raspberry Pi 4B.
 
 IIC Pin: SCL/SDA GPIO3/GPIO2.
 
