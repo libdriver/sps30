@@ -2,61 +2,111 @@
 
 #### 1.1 Chip Info
 
-chip name : STM32F407ZGT6.
+Chip Name: STM32F407ZGT6.
 
-extern oscillator : 8MHz.
+Extern Oscillator: 8MHz.
 
-uart pin: TX/RX PA9/PA10.
+UART Pin: TX/RX PA9/PA10.
 
-iic pin: SCL/SDA PB8/PB9.
+IIC Pin: SCL/SDA PB8/PB9.
 
-uart2 pin:  TX/RX PA2/PA3.
+UART2 Pin:  TX/RX PA2/PA3.
 
-### 2. Shell
+### 2. Development and Debugging
 
-#### 2.1 Shell Parameter
+#### 2.1 Integrated Development Environment
 
-baud rate: 115200.
+LidDriver provides both Keil and IAR integrated development environment projects.
 
-data bits : 8.
+MDK is the Keil ARM project and your Keil version must be 5 or higher.Keil ARM project needs STMicroelectronics STM32F4 Series Device Family Pack and you can download from https://www.keil.com/dd2/stmicroelectronics/stm32f407zgtx.
 
-stop bits: 1.
+EW is the IAR ARM project and your IAR version must be 9 or higher.
 
-parity: none.
+#### 2.2 Serial Port Parameter
 
-flow control: none.
+Baud Rate: 115200.
+
+Data Bits : 8.
+
+Stop Bits: 1.
+
+Parity: None.
+
+Flow Control: None.
+
+#### 2.3 Serial Port Assistant
+
+We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g. the displayed content does not divide lines), please modify the configuration of your serial port assistant or replace one that supports '\n' parsing.
 
 ### 3. SPS30
 
 #### 3.1 Command Instruction
 
-​          sps30 is a basic command which can test all sps30 driver function:
+1. Show sps30 chip and driver information.
 
-​           -i        show sps30 chip and driver information.
+   ```shell
+   sps30 (-i | --information)
+   ```
 
-​           -h       show sps30 help.
+2. Show sps30 help.
 
-​           -p       show sps30 pin connections of the current board.
+   ```shell
+   sps30 (-h | --help)
+   ```
 
-​           -t (reg (-iic | -uart) | read <times> (-iic | -uart)) 
+3. Show sps30 pin connections of the current board.
 
-​           -t reg (-iic | -uart)       run sps30 register test.
+   ```shell
+   sps30 (-p | --port)
+   ```
 
-​           -t read <times> (-iic | -uart)        run sps30 read test. times means the test times.
+4. Run sps30 register test.
 
-​           -c (basic read<times> (-iic | -uart) | basic type (-iic | -uart) | basic sn (-iic | -uart) | basic clean (-iic | -uart) | basic  version (-iic | -uart) | basic status (-iic | -uart))
+   ```shell
+   sps30 (-t reg | --test=reg) [--interface=<iic | uart>]
+   ```
 
-​           -c basic read <times> (-iic | -uart)        run sps30 basic read function. times is the read times.
+5. Run sps30 read test, times means the test times.
 
-​           -c basic type  (-iic | -uart)        run sps30 basic get type function. 
+   ```shell
+   sps30 (-t read | --test=read) [--interface=<iic | uart>] [--times=<num>]
+   ```
 
-​           -c basic sn  (-iic | -uart)        run sps30 basic get sn function.
+6. Run sps30 basic read function, times means the read times.
 
-​           -c basic clean (-iic | -uart)        run sps30 basic clean function.  
+   ```shell
+   sps30 (-e read | --example=read) [--interface=<iic | uart>] [--times=<num>]
+   ```
 
-​           -c basic version (-iic | -uart)        run sps30 basic get version function.  
+7. Run sps30 basic get type function. 
 
-​           -c basic status (-iic | -uart)        run sps30 basic get status function.  
+   ```shell
+   sps30 (-e type | --example=type) [--interface=<iic | uart>]
+   ```
+
+8. Run sps30 basic get sn function.
+
+   ```shell
+   sps30 (-e sn | --example=sn) [--interface=<iic | uart>]
+   ```
+
+9. Run sps30 basic clean function.  
+
+   ```shell
+   sps30 (-e clean | --example=clean) [--interface=<iic | uart>]
+   ```
+
+10. Run sps30 basic get version function.  
+
+    ```shell
+    sps30 (-e version | --example=version) [--interface=<iic | uart>]
+    ```
+
+11. Run sps30 basic get status function.  
+
+    ```shell
+    sps30 (-e status | --example=status) [--interface=<iic | uart>]
+    ```
 
 #### 3.2 Command Example
 
@@ -84,7 +134,7 @@ sps30: UART interface RX connected to GPIOA PIN3.
 ```
 
 ```shell
-sps30 -t reg -iic
+sps30 -t reg --interface=iic
 
 sps30: chip is Sensirion SPS30.
 sps30: manufacturer is Sensirion.
@@ -133,7 +183,7 @@ sps30: finish register test.
 ```
 
 ```shell
-sps30 -t read 3 -iic
+sps30 -t read --interface=iic --times=3
 
 sps30: chip is Sensirion SPS30.
 sps30: manufacturer is Sensirion.
@@ -146,134 +196,134 @@ sps30: max temperature is 60.0C.
 sps30: min temperature is -10.0C.
 sps30: start read test.
 sps30: IEEE754 read test.
-sps30: pm1.0 is 52.32 ug/m3.
-sps30: pm2.5 is 74.44 ug/m3.
-sps30: pm4.0 is 90.18 ug/m3.
-sps30: pm10.0 is 98.47 ug/m3.
-sps30: pm0.5 is 304.43 cm3.
-sps30: pm1.0 is 388.05 cm3.
-sps30: pm2.5 is 411.04 cm3.
-sps30: pm4.0 is 415.18 cm3.
-sps30: pm10.0 is 416.22 cm3.
-sps30: typical is 0.76 um.
-sps30: pm1.0 is 51.10 ug/m3.
-sps30: pm2.5 is 60.21 ug/m3.
-sps30: pm4.0 is 65.55 ug/m3.
-sps30: pm10.0 is 68.35 ug/m3.
-sps30: pm0.5 is 329.75 cm3.
-sps30: pm1.0 is 392.76 cm3.
-sps30: pm2.5 is 401.39 cm3.
-sps30: pm4.0 is 402.87 cm3.
-sps30: pm10.0 is 403.28 cm3.
-sps30: typical is 0.67 um.
-sps30: pm1.0 is 52.14 ug/m3.
-sps30: pm2.5 is 59.20 ug/m3.
-sps30: pm4.0 is 62.85 ug/m3.
-sps30: pm10.0 is 64.76 ug/m3.
-sps30: pm0.5 is 342.31 cm3.
-sps30: pm1.0 is 403.27 cm3.
-sps30: pm2.5 is 409.59 cm3.
-sps30: pm4.0 is 410.64 cm3.
-sps30: pm10.0 is 410.95 cm3.
-sps30: typical is 0.65 um.
+sps30: pm1.0 is 10.74 ug/m3.
+sps30: pm2.5 is 23.69 ug/m3.
+sps30: pm4.0 is 33.68 ug/m3.
+sps30: pm10.0 is 38.95 ug/m3.
+sps30: pm0.5 is 40.64 cm3.
+sps30: pm1.0 is 70.37 cm3.
+sps30: pm2.5 is 84.41 cm3.
+sps30: pm4.0 is 86.98 cm3.
+sps30: pm10.0 is 87.60 cm3.
+sps30: typical is 0.95 um.
+sps30: pm1.0 is 9.27 ug/m3.
+sps30: pm2.5 is 15.31 ug/m3.
+sps30: pm4.0 is 19.81 ug/m3.
+sps30: pm10.0 is 22.19 ug/m3.
+sps30: pm0.5 is 48.38 cm3.
+sps30: pm1.0 is 66.37 cm3.
+sps30: pm2.5 is 72.80 cm3.
+sps30: pm4.0 is 73.97 cm3.
+sps30: pm10.0 is 74.26 cm3.
+sps30: typical is 0.85 um.
+sps30: pm1.0 is 8.80 ug/m3.
+sps30: pm2.5 is 13.28 ug/m3.
+sps30: pm4.0 is 16.53 ug/m3.
+sps30: pm10.0 is 18.25 ug/m3.
+sps30: pm0.5 is 49.27 cm3.
+sps30: pm1.0 is 64.46 cm3.
+sps30: pm2.5 is 69.17 cm3.
+sps30: pm4.0 is 70.02 cm3.
+sps30: pm10.0 is 70.23 cm3.
+sps30: typical is 0.73 um.
 sps30: UINT16 read test.
-sps30: pm1.0 is 36.00 ug/m3.
-sps30: pm2.5 is 52.00 ug/m3.
-sps30: pm4.0 is 64.00 ug/m3.
-sps30: pm10.0 is 70.00 ug/m3.
-sps30: pm0.5 is 210.00 cm3.
-sps30: pm1.0 is 269.00 cm3.
-sps30: pm2.5 is 286.00 cm3.
-sps30: pm4.0 is 289.00 cm3.
-sps30: pm10.0 is 290.00 cm3.
-sps30: typical is 0.80 um.
-sps30: pm1.0 is 35.00 ug/m3.
-sps30: pm2.5 is 40.00 ug/m3.
-sps30: pm4.0 is 44.00 ug/m3.
-sps30: pm10.0 is 46.00 ug/m3.
-sps30: pm0.5 is 225.00 cm3.
-sps30: pm1.0 is 267.00 cm3.
-sps30: pm2.5 is 272.00 cm3.
-sps30: pm4.0 is 273.00 cm3.
-sps30: pm10.0 is 274.00 cm3.
-sps30: typical is 0.69 um.
-sps30: pm1.0 is 37.00 ug/m3.
-sps30: pm2.5 is 42.00 ug/m3.
-sps30: pm4.0 is 44.00 ug/m3.
-sps30: pm10.0 is 46.00 ug/m3.
-sps30: pm0.5 is 244.00 cm3.
-sps30: pm1.0 is 287.00 cm3.
-sps30: pm2.5 is 291.00 cm3.
-sps30: pm4.0 is 292.00 cm3.
-sps30: pm10.0 is 292.00 cm3.
-sps30: typical is 0.66 um.
+sps30: pm1.0 is 5.00 ug/m3.
+sps30: pm2.5 is 10.00 ug/m3.
+sps30: pm4.0 is 14.00 ug/m3.
+sps30: pm10.0 is 17.00 ug/m3.
+sps30: pm0.5 is 19.00 cm3.
+sps30: pm1.0 is 32.00 cm3.
+sps30: pm2.5 is 38.00 cm3.
+sps30: pm4.0 is 39.00 cm3.
+sps30: pm10.0 is 39.00 cm3.
+sps30: typical is 0.73 um.
+sps30: pm1.0 is 4.00 ug/m3.
+sps30: pm2.5 is 4.00 ug/m3.
+sps30: pm4.0 is 4.00 ug/m3.
+sps30: pm10.0 is 4.00 ug/m3.
+sps30: pm0.5 is 25.00 cm3.
+sps30: pm1.0 is 29.00 cm3.
+sps30: pm2.5 is 29.00 cm3.
+sps30: pm4.0 is 29.00 cm3.
+sps30: pm10.0 is 29.00 cm3.
+sps30: typical is 0.48 um.
+sps30: pm1.0 is 4.00 ug/m3.
+sps30: pm2.5 is 4.00 ug/m3.
+sps30: pm4.0 is 4.00 ug/m3.
+sps30: pm10.0 is 4.00 ug/m3.
+sps30: pm0.5 is 26.00 cm3.
+sps30: pm1.0 is 30.00 cm3.
+sps30: pm2.5 is 30.00 cm3.
+sps30: pm4.0 is 30.00 cm3.
+sps30: pm10.0 is 30.00 cm3.
+sps30: typical is 0.55 um.
 sps30: finish read test.
 ```
 
 ```shell
-sps30 -c basic read 3 -iic
+sps30 -e read --interface=iic --times=3
 
 sps30: 1/3.
-sps30: pm1.0 is 57.18 ug/m3.
-sps30: pm2.5 is 59.96 ug/m3.
-sps30: pm4.0 is 59.96 ug/m3.
-sps30: pm10.0 is 59.96 ug/m3.
-sps30: pm0.5 is 388.30 cm3.
-sps30: pm1.0 is 447.74 cm3.
-sps30: pm2.5 is 449.17 cm3.
-sps30: pm4.0 is 449.30 cm3.
-sps30: pm10.0 is 449.41 cm3.
-sps30: typical is 0.51 um.
+sps30: pm1.0 is 5.24 ug/m3.
+sps30: pm2.5 is 9.26 ug/m3.
+sps30: pm4.0 is 12.29 ug/m3.
+sps30: pm10.0 is 13.89 ug/m3.
+sps30: pm0.5 is 25.76 cm3.
+sps30: pm1.0 is 36.83 cm3.
+sps30: pm2.5 is 41.14 cm3.
+sps30: pm4.0 is 41.93 cm3.
+sps30: pm10.0 is 42.12 cm3.
+sps30: typical is 0.78 um.
 sps30: 2/3.
-sps30: pm1.0 is 57.21 ug/m3.
-sps30: pm2.5 is 60.00 ug/m3.
-sps30: pm4.0 is 60.00 ug/m3.
-sps30: pm10.0 is 60.00 ug/m3.
-sps30: pm0.5 is 388.52 cm3.
-sps30: pm1.0 is 447.99 cm3.
-sps30: pm2.5 is 449.42 cm3.
-sps30: pm4.0 is 449.56 cm3.
-sps30: pm10.0 is 449.66 cm3.
-sps30: typical is 0.54 um.
+sps30: pm1.0 is 4.79 ug/m3.
+sps30: pm2.5 is 6.55 ug/m3.
+sps30: pm4.0 is 7.78 ug/m3.
+sps30: pm10.0 is 8.42 ug/m3.
+sps30: pm0.5 is 28.60 cm3.
+sps30: pm1.0 is 35.86 cm3.
+sps30: pm2.5 is 37.67 cm3.
+sps30: pm4.0 is 37.99 cm3.
+sps30: pm10.0 is 38.07 cm3.
+sps30: typical is 0.75 um.
 sps30: 3/3.
-sps30: pm1.0 is 57.37 ug/m3.
-sps30: pm2.5 is 60.16 ug/m3.
-sps30: pm4.0 is 60.16 ug/m3.
-sps30: pm10.0 is 60.16 ug/m3.
-sps30: pm0.5 is 389.57 cm3.
-sps30: pm1.0 is 449.20 cm3.
-sps30: pm2.5 is 450.63 cm3.
-sps30: pm4.0 is 450.76 cm3.
-sps30: pm10.0 is 450.87 cm3.
-sps30: typical is 0.54 um.
+sps30: pm1.0 is 4.75 ug/m3.
+sps30: pm2.5 is 5.74 ug/m3.
+sps30: pm4.0 is 6.35 ug/m3.
+sps30: pm10.0 is 6.67 ug/m3.
+sps30: pm0.5 is 30.26 cm3.
+sps30: pm1.0 is 36.33 cm3.
+sps30: pm2.5 is 37.29 cm3.
+sps30: pm4.0 is 37.46 cm3.
+sps30: pm10.0 is 37.50 cm3.
+sps30: typical is 0.72 um.
 ```
 
 ```shell
-sps30 -c basic type -iic
+sps30 -e type --interface=iic
 
 sps30: type is 00080000.
 ```
 
 ```shell
-sps30 -c basic sn -iic 
+sps30 -e sn --interface=iic 
 
 sps30: sn is 219CF286F39C0D87.
 ```
 
 ```shell
-sps30 -c basic version -iic
+sps30 -e version --interface=iic
 
 sps30: major is 0x02 minor is 0x02.
 ```
 
 ```shell
-sps30 -c basic status -iic  
+sps30 -e status --interface=iic 
 
 sps30: status is 00100000.
 ```
 
 ```shell
-sps30 -c basic clean -iic  
+sps30 -e clean --interface=iic  
 
 sps30: start cleaning.
 sps30: stop cleaning.
@@ -282,27 +332,27 @@ sps30: stop cleaning.
 ```shell
 sps30 -h
 
-sps30 -i
-	show sps30 chip and driver information.
-sps30 -h
-	show sps30 help.
-sps30 -p
-	show sps30 pin connections of the current board.
-sps30 -t reg (-iic | -uart)
-	run sps30 register test.
-sps30 -t read <times> (-iic | -uart)
-	run sps30 read test.times means the test times.
-sps30 -c basic read <times> (-iic | -uart)
-	run sps30 basic read function.times is the read times.
-sps30 -c basic type (-iic | -uart)
-	run sps30 basic get type function.
-sps30 -c basic sn (-iic | -uart)
-	run sps30 basic get sn function.
-sps30 -c basic clean (-iic | -uart)
-	run sps30 basic clean function.
-sps30 -c basic version (-iic | -uart)
-	run sps30 basic get version function.
-sps30 -c basic status (-iic | -uart)
-	run sps30 basic get status function.
+Usage:
+  sps30 (-i | --information)
+  sps30 (-h | --help)
+  sps30 (-p | --port)
+  sps30 (-t reg | --test=reg) [--interface=<iic | uart>]
+  sps30 (-t read | --test=read) [--interface=<iic | uart>] [--times=<num>]
+  sps30 (-e read | --example=read) [--interface=<iic | uart>] [--times=<num>]
+  sps30 (-e type | --example=type) [--interface=<iic | uart>]
+  sps30 (-e sn | --example=sn) [--interface=<iic | uart>]
+  sps30 (-e clean | --example=clean) [--interface=<iic | uart>]
+  sps30 (-e version | --example=version) [--interface=<iic | uart>]
+  sps30 (-e status | --example=status) [--interface=<iic | uart>]
+
+Options:
+  -e <read | type | sn | clean | version | status>, --example=<read | type | sn | clean | version | status>
+                                          Run the driver example.
+  -h, --help                              Show the help.
+  -i, --information                       Show the chip information.
+      --interface=<iic | uart>            Set the chip interface.([default: iic])
+  -p, --port                              Display the pin connections of the current board.
+  -t <reg | read>, --test=<reg | read>    Run the driver test.
+      --times=<num>                       Set the running times.([default: 3])
 ```
 

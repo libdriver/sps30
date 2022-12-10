@@ -199,7 +199,7 @@ static uint8_t a_sps30_iic_write(sps30_handle_t *handle, uint8_t addr, uint16_t 
  * @brief      uart get the rx frame
  * @param[in]  *handle points to a sps30 handle structure
  * @param[in]  len is the buffer length
- * @param[out] *output points to a output buffer
+ * @param[out] *output points to an output buffer
  * @param[in]  out_len is the output length
  * @return     status code
  *             - 0 success
@@ -283,9 +283,9 @@ static uint8_t a_sps30_uart_get_rx_frame(sps30_handle_t *handle, uint16_t len, u
 /**
  * @brief      uart set the tx frame
  * @param[in]  *handle points to a sps30 handle structure
- * @param[in]  *input points to a input buffer
+ * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
- * @param[out] *out_len points to a output lengh buffer
+ * @param[out] *out_len points to an output lengh buffer
  * @return     status code
  *             - 0 success
  *             - 1 uart set tx frame failed
@@ -367,10 +367,10 @@ static uint8_t a_sps30_uart_set_tx_frame(sps30_handle_t *handle, uint8_t *input,
 /**
  * @brief      write read bytes
  * @param[in]  *handle points to a sps30 handle structure
- * @param[in]  *input points to a input buffer
+ * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
  * @param[in]  delay_ms is the delay time in ms
- * @param[out] *output points to a output buffer
+ * @param[out] *output points to an output buffer
  * @param[in]  out_len is the output length
  * @return     status code
  *             - 0 success
@@ -1006,7 +1006,7 @@ uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second
 /**
  * @brief      get the auto cleaning interval
  * @param[in]  *handle points to a sps30 handle structure
- * @param[out] *second points to a interval buffer
+ * @param[out] *second points to an interval buffer
  * @return     status code
  *             - 0 success
  *             - 1 get auto cleaning interval failed
@@ -2163,9 +2163,9 @@ uint8_t sps30_deinit(sps30_handle_t *handle)
 /**
  * @brief      set and get the chip register with uart interface
  * @param[in]  *handle points to a sps30 handle structure
- * @param[in]  *input points to a input buffer
+ * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
- * @param[out] *output points to a output buffer
+ * @param[out] *output points to an output buffer
  * @param[in]  out_len is the output length
  * @return     status code
  *             - 0 success
