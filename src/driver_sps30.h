@@ -98,10 +98,10 @@ typedef enum
  */
 typedef struct sps30_handle_s
 {
-    uint8_t (*iic_init)(void);                                                /**< point to a iic_init function address */
-    uint8_t (*iic_deinit)(void);                                              /**< point to a iic_deinit function address */
-    uint8_t (*iic_write_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);       /**< point to a iic_write_cmd function address */
-    uint8_t (*iic_read_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);        /**< point to a iic_read_cmd function address */
+    uint8_t (*iic_init)(void);                                                /**< point to an iic_init function address */
+    uint8_t (*iic_deinit)(void);                                              /**< point to an iic_deinit function address */
+    uint8_t (*iic_write_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);       /**< point to an iic_write_cmd function address */
+    uint8_t (*iic_read_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);        /**< point to an iic_read_cmd function address */
     uint8_t (*uart_init)(void);                                               /**< point to a uart_init function address */
     uint8_t (*uart_deinit)(void);                                             /**< point to a uart_deinit function address */
     uint16_t (*uart_read)(uint8_t *buf, uint16_t len);                        /**< point to a uart_read function address */
@@ -210,7 +210,7 @@ typedef struct sps30_info_s
 /**
  * @brief     link iic_init function
  * @param[in] HANDLE points to a sps30 handle structure
- * @param[in] FUC points to a iic_init function address
+ * @param[in] FUC points to an iic_init function address
  * @note      none
  */
 #define DRIVER_SPS30_LINK_IIC_INIT(HANDLE, FUC)               (HANDLE)->iic_init = FUC
@@ -218,7 +218,7 @@ typedef struct sps30_info_s
 /**
  * @brief     link iic_deinit function
  * @param[in] HANDLE points to a sps30 handle structure
- * @param[in] FUC points to a iic_deinit function address
+ * @param[in] FUC points to an iic_deinit function address
  * @note      none
  */
 #define DRIVER_SPS30_LINK_IIC_DEINIT(HANDLE, FUC)             (HANDLE)->iic_deinit = FUC
@@ -226,7 +226,7 @@ typedef struct sps30_info_s
 /**
  * @brief     link iic_write_cmd function
  * @param[in] HANDLE points to a sps30 handle structure
- * @param[in] FUC points to a iic_write_cmd function address
+ * @param[in] FUC points to an iic_write_cmd function address
  * @note      none
  */
 #define DRIVER_SPS30_LINK_IIC_WRITE_COMMAND(HANDLE, FUC)    (HANDLE)->iic_write_cmd = FUC
@@ -234,7 +234,7 @@ typedef struct sps30_info_s
 /**
  * @brief     link iic_read_cmd function
  * @param[in] HANDLE points to a sps30 handle structure
- * @param[in] FUC points to a iic_read_cmd function address
+ * @param[in] FUC points to an iic_read_cmd function address
  * @note      none
  */
 #define DRIVER_SPS30_LINK_IIC_READ_COMMAND(HANDLE, FUC)     (HANDLE)->iic_read_cmd = FUC
@@ -441,7 +441,7 @@ uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second
 /**
  * @brief      get the auto cleaning interval
  * @param[in]  *handle points to a sps30 handle structure
- * @param[out] *second points to a interval buffer
+ * @param[out] *second points to an interval buffer
  * @return     status code
  *             - 0 success
  *             - 1 get auto cleaning interval failed
@@ -572,9 +572,9 @@ uint8_t sps30_get_reg_iic(sps30_handle_t *handle, uint16_t reg, uint8_t *buf, ui
 /**
  * @brief      set and get the chip register with uart interface
  * @param[in]  *handle points to a sps30 handle structure
- * @param[in]  *input points to a input buffer
+ * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
- * @param[out] *output points to a output buffer
+ * @param[out] *output points to an output buffer
  * @param[in]  out_len is the output length
  * @return     status code
  *             - 0 success
