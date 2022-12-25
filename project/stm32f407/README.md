@@ -66,13 +66,13 @@ We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g
    sps30 (-t reg | --test=reg) [--interface=<iic | uart>]
    ```
 
-5. Run sps30 read test, times means the test times.
+5. Run sps30 read test, num means the test times.
 
    ```shell
    sps30 (-t read | --test=read) [--interface=<iic | uart>] [--times=<num>]
    ```
 
-6. Run sps30 basic read function, times means the read times.
+6. Run sps30 basic read function, num means the read times.
 
    ```shell
    sps30 (-e read | --example=read) [--interface=<iic | uart>] [--times=<num>]
