@@ -84,7 +84,7 @@
 
 /**
  * @brief     generate the crc
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] *data points to a data buffer
  * @param[in] count is the data length
  * @return    crc
@@ -132,7 +132,7 @@ static uint8_t a_sps30_generate_crc(sps30_handle_t *handle, uint8_t* data, uint8
 
 /**
  * @brief      read bytes
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  addr is the iic device address
  * @param[in]  reg is the iic register address
  * @param[out] *data points to a data buffer
@@ -164,7 +164,7 @@ static uint8_t a_sps30_iic_read(sps30_handle_t *handle, uint8_t addr, uint16_t r
 
 /**
  * @brief     write bytes
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] addr is the iic device address
  * @param[in] reg is the iic register address
  * @param[in] *data points to a data buffer
@@ -197,7 +197,7 @@ static uint8_t a_sps30_iic_write(sps30_handle_t *handle, uint8_t addr, uint16_t 
 
 /**
  * @brief      uart get the rx frame
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  len is the buffer length
  * @param[out] *output points to an output buffer
  * @param[in]  out_len is the output length
@@ -282,7 +282,7 @@ static uint8_t a_sps30_uart_get_rx_frame(sps30_handle_t *handle, uint16_t len, u
 
 /**
  * @brief      uart set the tx frame
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
  * @param[out] *out_len points to an output lengh buffer
@@ -366,7 +366,7 @@ static uint8_t a_sps30_uart_set_tx_frame(sps30_handle_t *handle, uint8_t *input,
 
 /**
  * @brief      write read bytes
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
  * @param[in]  delay_ms is the delay time in ms
@@ -406,7 +406,7 @@ static uint8_t a_sps30_uart_write_read(sps30_handle_t *handle, uint8_t *input, u
 
 /**
  * @brief     print error
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] e is the error code
  * @return    error code
  * @note      none
@@ -469,7 +469,7 @@ static uint8_t a_sps30_uart_error(sps30_handle_t *handle, uint8_t e)
 
 /**
  * @brief     set the chip interface
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] interface is the chip interface
  * @return    status code
  *            - 0 success
@@ -490,7 +490,7 @@ uint8_t sps30_set_interface(sps30_handle_t *handle, sps30_interface_t interface)
 
 /**
  * @brief      get the chip interface
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *interface points to a chip interface buffer
  * @return     status code
  *             - 0 success
@@ -511,7 +511,7 @@ uint8_t sps30_get_interface(sps30_handle_t *handle, sps30_interface_t *interface
 
 /**
  * @brief     start the measurement
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] format is the data format
  * @return    status code
  *            - 0 success
@@ -588,7 +588,7 @@ uint8_t sps30_start_measurement(sps30_handle_t *handle, sps30_format_t format)
 
 /**
  * @brief     stop the measurement
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 stop measurement failed
@@ -655,7 +655,7 @@ uint8_t sps30_stop_measurement(sps30_handle_t *handle)
 
 /**
  * @brief      read the data read flag
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *flag points to a data ready flag buffer
  * @return     status code
  *             - 0 success
@@ -709,7 +709,7 @@ uint8_t sps30_read_data_flag(sps30_handle_t *handle, sps30_data_ready_flag_t *fl
 
 /**
  * @brief     enter the sleep mode
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 sleep failed
@@ -776,7 +776,7 @@ uint8_t sps30_sleep(sps30_handle_t *handle)
 
 /**
  * @brief     wake up the chip
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 wake up failed
@@ -849,7 +849,7 @@ uint8_t sps30_wake_up(sps30_handle_t *handle)
 
 /**
  * @brief     start the fan cleaing
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 start fan cleaning failed
@@ -916,7 +916,7 @@ uint8_t sps30_start_fan_cleaning(sps30_handle_t *handle)
 
 /**
  * @brief     set the auto cleaning interval
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] second is the interval
  * @return    status code
  *            - 0 success
@@ -1005,7 +1005,7 @@ uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second
 
 /**
  * @brief      get the auto cleaning interval
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *second points to an interval buffer
  * @return     status code
  *             - 0 success
@@ -1095,7 +1095,7 @@ uint8_t sps30_get_auto_cleaning_interval(sps30_handle_t *handle, uint32_t *secon
 
 /**
  * @brief     disable the auto cleaning interval
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 disable auto cleaning interval failed
@@ -1179,7 +1179,7 @@ uint8_t sps30_disable_auto_cleaning_interval(sps30_handle_t *handle)
 
 /**
  * @brief      get the product type
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *type points to a product type buffer
  * @return     status code
  *             - 0 success
@@ -1271,7 +1271,7 @@ uint8_t sps30_get_product_type(sps30_handle_t *handle, char type[9])
 
 /**
  * @brief      get the serial number
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *sn points to a serial number buffer
  * @return     status code
  *             - 0 success
@@ -1363,7 +1363,7 @@ uint8_t sps30_get_serial_number(sps30_handle_t *handle, char sn[17])
 
 /**
  * @brief      get the version
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *major points to a major buffer
  * @param[out] *minor points to a minor buffer
  * @return     status code
@@ -1445,7 +1445,7 @@ uint8_t sps30_get_version(sps30_handle_t *handle, uint8_t *major, uint8_t *minor
 
 /**
  * @brief      get the device status
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[out] *status points to a status buffer
  * @return     status code
  *             - 0 success
@@ -1535,7 +1535,7 @@ uint8_t sps30_get_device_status(sps30_handle_t *handle, uint32_t *status)
 
 /**
  * @brief     clear the device status
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 clear device status failed
@@ -1603,7 +1603,7 @@ uint8_t sps30_clear_device_status(sps30_handle_t *handle)
 
 /**
  * @brief     reset the chip
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 reset failed
@@ -1670,8 +1670,8 @@ uint8_t sps30_reset(sps30_handle_t *handle)
 
 /**
  * @brief      read the result
- * @param[in]  *handle points to a sps30 handle structure
- * @param[out] *pm points to a sps30 pm structure
+ * @param[in]  *handle points to an sps30 handle structure
+ * @param[out] *pm points to an sps30 pm structure
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -1933,7 +1933,7 @@ uint8_t sps30_read(sps30_handle_t *handle, sps30_pm_t *pm)
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic or uart initialization failed
@@ -2079,7 +2079,7 @@ uint8_t sps30_init(sps30_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic or uart deinit failed
@@ -2162,7 +2162,7 @@ uint8_t sps30_deinit(sps30_handle_t *handle)
 
 /**
  * @brief      set and get the chip register with uart interface
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
  * @param[out] *output points to an output buffer
@@ -2197,7 +2197,7 @@ uint8_t sps30_set_get_reg_uart(sps30_handle_t *handle, uint8_t *input, uint16_t 
 
 /**
  * @brief     set the chip register with iic interface
- * @param[in] *handle points to a sps30 handle structure
+ * @param[in] *handle points to an sps30 handle structure
  * @param[in] reg is the iic register address
  * @param[in] *buf points to a data buffer
  * @param[in] len is the data buffer length
@@ -2233,7 +2233,7 @@ uint8_t sps30_set_reg_iic(sps30_handle_t *handle, uint16_t reg, uint8_t *buf, ui
 
 /**
  * @brief      get the chip register with iic interface
- * @param[in]  *handle points to a sps30 handle structure
+ * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  reg is the iic register address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the data buffer length
@@ -2269,7 +2269,7 @@ uint8_t sps30_get_reg_iic(sps30_handle_t *handle, uint16_t reg, uint8_t *buf, ui
 
 /**
  * @brief      get chip information
- * @param[out] *info points to a sps30 info structure
+ * @param[out] *info points to an sps30 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
