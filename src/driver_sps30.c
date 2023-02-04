@@ -285,7 +285,7 @@ static uint8_t a_sps30_uart_get_rx_frame(sps30_handle_t *handle, uint16_t len, u
  * @param[in]  *handle points to an sps30 handle structure
  * @param[in]  *input points to an input buffer
  * @param[in]  in_len is the input length
- * @param[out] *out_len points to an output lengh buffer
+ * @param[out] *out_len points to an output length buffer
  * @return     status code
  *             - 0 success
  *             - 1 uart set tx frame failed
@@ -297,7 +297,7 @@ static uint8_t a_sps30_uart_set_tx_frame(sps30_handle_t *handle, uint8_t *input,
     
     memset(handle->buf, 0, sizeof(uint8_t) * 256);                                                            /* clear buffer */
     handle->buf[0] = input[0];                                                                                /* set buf[0] */
-    *out_len = 1;                                                                                             /* set output lenght */
+    *out_len = 1;                                                                                             /* set output length */
     for (i = 1; i < (in_len - 1); i++)
     {
         if ((*out_len) >= 255)                                                                                /* check output length */
@@ -458,7 +458,7 @@ static uint8_t a_sps30_uart_error(sps30_handle_t *handle, uint8_t e)
         }
         default :
         {
-            handle->debug_print("sps30: unknow code.\n");                                     /* unknow code */
+            handle->debug_print("sps30: unknown code.\n");                                    /* unknown code */
             
             break;
         }
@@ -848,7 +848,7 @@ uint8_t sps30_wake_up(sps30_handle_t *handle)
 }
 
 /**
- * @brief     start the fan cleaing
+ * @brief     start the fan cleaning
  * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
@@ -902,10 +902,10 @@ uint8_t sps30_start_fan_cleaning(sps30_handle_t *handle)
     }
     else                                                                                                        /* iic */
     {
-        res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_START_FAN_CLEANING, NULL, 0, 5);       /* start the fan cleaing command */
+        res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_START_FAN_CLEANING, NULL, 0, 5);       /* start the fan cleaning command */
         if (res != 0)                                                                                           /* check result */
         {
-            handle->debug_print("sps30: start the fan cleaing failed.\n");                                      /* start the fan cleaing failed */
+            handle->debug_print("sps30: start the fan cleaning failed.\n");                                     /* start the fan cleaning failed */
            
             return 1;                                                                                           /* return error */
         }
@@ -923,7 +923,7 @@ uint8_t sps30_start_fan_cleaning(sps30_handle_t *handle)
  *            - 1 set auto cleaning interval failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
- *            - 4 second is invlaid
+ *            - 4 second is invalid
  * @note      10 < second < 604800
  */
 uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second)
@@ -940,7 +940,7 @@ uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second
     }
     if ((second < 10) || (second > 604800))                                                                      /* check second */
     {
-        handle->debug_print("sps30: second is invlaid.\n");                                                      /* second is invlaid */
+        handle->debug_print("sps30: second is invalid.\n");                                                      /* second is invalid */
            
         return 4;                                                                                                /* return error */
     }
@@ -2291,7 +2291,7 @@ uint8_t sps30_info(sps30_info_t *info)
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
     info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
     info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
-    info->driver_version = DRIVER_VERSION;                          /* set driver verison */
+    info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
 }
