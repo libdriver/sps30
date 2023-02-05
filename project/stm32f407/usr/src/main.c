@@ -76,7 +76,7 @@ uint8_t sps30(uint8_t argc, char **argv)
         {"times", required_argument, NULL, 2},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint32_t times = 3;
     sps30_interface_t interface = SPS30_INTERFACE_IIC;
     
@@ -271,7 +271,7 @@ uint8_t sps30(uint8_t argc, char **argv)
     else if (strcmp("e_type", type) == 0)
     {
         uint8_t res;
-        char type[9];
+        char type_e[9];
         
         /* init */
         res = sps30_basic_init(interface);
@@ -281,7 +281,7 @@ uint8_t sps30(uint8_t argc, char **argv)
         }
         
         /* get the type */
-        res = sps30_basic_get_product_type((char *)type);
+        res = sps30_basic_get_product_type((char *)type_e);
         if (res != 0)
         {
             (void)sps30_basic_deinit();
@@ -290,7 +290,7 @@ uint8_t sps30(uint8_t argc, char **argv)
         }
         
         /* print */
-        sps30_interface_debug_print("sps30: type is %s.\n", type);
+        sps30_interface_debug_print("sps30: type is %s.\n", type_e);
         
         /* deinit */
         (void)sps30_basic_deinit();
@@ -493,7 +493,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
     
-    /* shell init && register sps30 fuction */
+    /* shell init && register sps30 function */
     shell_init();
     shell_register("sps30", sps30);
     uart_print("sps30: welcome to libdriver sps30.\n");
@@ -516,7 +516,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("sps30: unknow command.\n");
+                uart_print("sps30: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -532,7 +532,7 @@ int main(void)
             }
             else
             {
-                uart_print("sps30: unknow status code.\n");
+                uart_print("sps30: unknown status code.\n");
             }
             uart_flush();
         }

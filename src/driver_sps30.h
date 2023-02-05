@@ -413,7 +413,7 @@ uint8_t sps30_stop_measurement(sps30_handle_t *handle);
 uint8_t sps30_read_data_flag(sps30_handle_t *handle, sps30_data_ready_flag_t *flag);
 
 /**
- * @brief     start the fan cleaing
+ * @brief     start the fan cleaning
  * @param[in] *handle points to an sps30 handle structure
  * @return    status code
  *            - 0 success
@@ -433,7 +433,7 @@ uint8_t sps30_start_fan_cleaning(sps30_handle_t *handle);
  *            - 1 set auto cleaning interval failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
- *            - 4 second is invlaid
+ *            - 4 second is invalid
  * @note      10 < second < 604800
  */
 uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second);

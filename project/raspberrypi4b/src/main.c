@@ -1,14 +1,4 @@
 /**
- * Copyright (c) 2015 - present LibDriver All rights reserved
- * 
- * The MIT License (MIT)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
-/**
  * Copyright (C) LibDriver 2015-2021 All rights reserved
  * 
  * The MIT License (MIT)
@@ -76,7 +66,7 @@ uint8_t sps30(uint8_t argc, char **argv)
         {"times", required_argument, NULL, 2},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint32_t times = 3;
     sps30_interface_t interface = SPS30_INTERFACE_IIC;
     
@@ -271,7 +261,7 @@ uint8_t sps30(uint8_t argc, char **argv)
     else if (strcmp("e_type", type) == 0)
     {
         uint8_t res;
-        char type[9];
+        char type_e[9];
         
         /* init */
         res = sps30_basic_init(interface);
@@ -281,7 +271,7 @@ uint8_t sps30(uint8_t argc, char **argv)
         }
         
         /* get the type */
-        res = sps30_basic_get_product_type((char *)type);
+        res = sps30_basic_get_product_type((char *)type_e);
         if (res != 0)
         {
             (void)sps30_basic_deinit();
@@ -290,7 +280,7 @@ uint8_t sps30(uint8_t argc, char **argv)
         }
         
         /* print */
-        sps30_interface_debug_print("sps30: type is %s.\n", type);
+        sps30_interface_debug_print("sps30: type is %s.\n", type_e);
         
         /* deinit */
         (void)sps30_basic_deinit();
@@ -503,7 +493,7 @@ int main(uint8_t argc, char **argv)
     }
     else
     {
-        sps30_interface_debug_print("sps30: unknow status code.\n");
+        sps30_interface_debug_print("sps30: unknown status code.\n");
     }
 
     return 0;

@@ -55,7 +55,7 @@ static int iic_gs_fd;                       /**< iic handle */
 #define UART_DEVICE_NAME "/dev/ttyS0"       /**< uart device name */
 
 /**
- * @brief uart device hanble definition
+ * @brief uart device handle definition
  */
 static int uart_gs_fd;                      /**< uart handle */
 
@@ -161,7 +161,7 @@ uint16_t sps30_interface_uart_read(uint8_t *buf, uint16_t len)
 }
 
 /**
- * @brief     interface uate write
+ * @brief     interface uart write
  * @param[in] *buf points to a data buffer
  * @param[in] len is the length of the data buffer
  * @return    status code
