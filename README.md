@@ -47,6 +47,8 @@ Reference /interface IIC,UART platform independent template and finish your plat
 
 ### Usage
 
+You can refer to the examples in the/example directory to complete your own driver. If you want to use the default programming examples, here's how to use them.
+
 #### example basic
 
 ```C

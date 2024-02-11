@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver SPS30
- * @brief     libdriver sps30 is a full function driver of sps30 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver SPS30 is a full function driver of SPS30 and it can run in both MCU and Linux platform.
  * @version   1.0.0
  * @author    Shifeng Li
  *
