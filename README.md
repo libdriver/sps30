@@ -43,7 +43,9 @@ LibDriver SPS30 is the full function driver of SPS30 launched by LibDriver. It p
 
 ### Install
 
-Reference /interface IIC,UART platform independent template and finish your platform IIC,UART driver. Add /src, /interface and /example to your project.
+Reference /interface IIC,UART platform independent template and finish your platform IIC,UART driver. 
+
+Add the /src directory, the interface driver for your platform, and your own drivers to your project, if you want to use the default example drivers, add the /example directory to your project.
 
 ### Usage
 
