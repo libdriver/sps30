@@ -129,8 +129,8 @@ sps30 -p
 
 sps30: IIC interface SCL connected to GPIOB PIN8.
 sps30: IIC interface SDA connected to GPIOB PIN9.
-sps30: UART interface TX connected to GPIOA PIN2.
-sps30: UART interface RX connected to GPIOA PIN3.
+sps30: UART interface TX connected to GPIOA PIN3.
+sps30: UART interface RX connected to GPIOA PIN2.
 ```
 
 ```shell
