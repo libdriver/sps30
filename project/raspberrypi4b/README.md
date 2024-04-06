@@ -167,10 +167,10 @@ sps30: min temperature is -10.0C.
 ```shell
 ./sps30 -p
 
-sps30: IIC interface SCL connected to GPIO3(BCM3).
-sps30: IIC interface SDA connected to GPIO2(BCM2).
-sps30: UART interface TX connected to GPIO14(BCM14).
-sps30: UART interface RX connected to GPIO15(BCM15).
+sps30: IIC interface SCL connected to GPIO3(BCM).
+sps30: IIC interface SDA connected to GPIO2(BCM).
+sps30: UART interface TX connected to GPIO15(BCM).
+sps30: UART interface RX connected to GPIO14(BCM).
 ```
 
 ```shell

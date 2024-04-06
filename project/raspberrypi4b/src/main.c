@@ -453,10 +453,10 @@ uint8_t sps30(uint8_t argc, char **argv)
     else if (strcmp("p", type) == 0)
     {
         /* print pin connection */
-        sps30_interface_debug_print("sps30: IIC interface SCL connected to GPIO3(BCM3).\n");
-        sps30_interface_debug_print("sps30: IIC interface SDA connected to GPIO2(BCM2).\n");
-        sps30_interface_debug_print("sps30: UART interface TX connected to GPIO14(BCM14).\n");
-        sps30_interface_debug_print("sps30: UART interface RX connected to GPIO15(BCM15).\n");
+        sps30_interface_debug_print("sps30: IIC interface SCL connected to GPIO3(BCM).\n");
+        sps30_interface_debug_print("sps30: IIC interface SDA connected to GPIO2(BCM).\n");
+        sps30_interface_debug_print("sps30: UART interface TX connected to GPIO15(BCM).\n");
+        sps30_interface_debug_print("sps30: UART interface RX connected to GPIO14(BCM).\n");
         
         return 0;
     }

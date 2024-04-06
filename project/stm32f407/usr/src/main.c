@@ -465,8 +465,8 @@ uint8_t sps30(uint8_t argc, char **argv)
         /* print pin connection */
         sps30_interface_debug_print("sps30: IIC interface SCL connected to GPIOB PIN8.\n");
         sps30_interface_debug_print("sps30: IIC interface SDA connected to GPIOB PIN9.\n");
-        sps30_interface_debug_print("sps30: UART interface TX connected to GPIOA PIN2.\n");
-        sps30_interface_debug_print("sps30: UART interface RX connected to GPIOA PIN3.\n");
+        sps30_interface_debug_print("sps30: UART interface TX connected to GPIOA PIN3.\n");
+        sps30_interface_debug_print("sps30: UART interface RX connected to GPIOA PIN2.\n");
         
         return 0;
     }
