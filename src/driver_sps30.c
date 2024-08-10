@@ -2024,7 +2024,7 @@ uint8_t sps30_init(sps30_handle_t *handle)
         {
             handle->debug_print("sps30: uart init failed.\n");                                       /* uart init failed */
         
-            return 3;                                                                                /* return error */
+            return 1;                                                                                /* return error */
         }
         input_buf[0] = 0x7E;                                                                         /* set start */
         input_buf[1] = 0x00;                                                                         /* set addr */
@@ -2039,20 +2039,20 @@ uint8_t sps30_init(sps30_handle_t *handle)
             handle->debug_print("sps30: write read failed.\n");                                      /* write read failed */
             (void)handle->uart_deinit();                                                             /* uart deinit */
             
-            return 1;                                                                                /* return error */
+            return 4;                                                                                /* return error */
         }
         if (out_buf[5] != a_sps30_generate_crc(handle, (uint8_t *)&out_buf[1], 4))                   /* check crc */
         {
             handle->debug_print("sps30: crc check error.\n");                                        /* crc check error */
             (void)handle->uart_deinit();                                                             /* uart deinit */
             
-            return 1;                                                                                /* return error */
+            return 4;                                                                                /* return error */
         }
         if (a_sps30_uart_error(handle, out_buf[3]) != 0)                                             /* check status */
         {
             (void)handle->uart_deinit();                                                             /* uart deinit */
             
-            return 1;                                                                                /* return error */
+            return 4;                                                                                /* return error */
         }
     }
     else
@@ -2060,8 +2060,8 @@ uint8_t sps30_init(sps30_handle_t *handle)
         if (handle->iic_init() != 0)                                                                 /* iic init */
         {
             handle->debug_print("sps30: iic init failed.\n");                                        /* iic init failed */
-        
-            return 3;                                                                                /* return error */
+            
+            return 1;                                                                                /* return error */
         }
         res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_RESET, NULL, 0, 100);       /* reset command */
         if (res != 0)                                                                                /* check result */
