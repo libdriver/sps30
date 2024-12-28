@@ -381,7 +381,7 @@ Functions</h2></td></tr>
 <p>clear the device status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -417,7 +417,7 @@ Functions</h2></td></tr>
 <p>close the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -454,7 +454,7 @@ Functions</h2></td></tr>
 <p>disable the auto cleaning interval </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -500,8 +500,8 @@ Functions</h2></td></tr>
 <p>get the auto cleaning interval </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*second</td><td>points to an interval buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*second</td><td>pointer to an interval buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -547,8 +547,8 @@ Functions</h2></td></tr>
 <p>get the device status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>points to a status buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>pointer to a status buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -594,8 +594,8 @@ Functions</h2></td></tr>
 <p>get the chip interface </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*interface</td><td>points to a chip interface buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*interface</td><td>pointer to a chip interface buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -639,8 +639,8 @@ Functions</h2></td></tr>
 <p>get the product type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*type</td><td>points to a product type buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*type</td><td>pointer to a product type buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -686,8 +686,8 @@ Functions</h2></td></tr>
 <p>get the serial number </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*sn</td><td>points to a serial number buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*sn</td><td>pointer to a serial number buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -739,9 +739,9 @@ Functions</h2></td></tr>
 <p>get the version </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*major</td><td>points to a major buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*minor</td><td>points to a minor buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*major</td><td>pointer to a major buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*minor</td><td>pointer to a minor buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -777,7 +777,7 @@ Functions</h2></td></tr>
 <p>get chip information </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>points to an sps30 info structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>pointer to an sps30 info structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -811,7 +811,7 @@ Functions</h2></td></tr>
 <p>initialize the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -858,8 +858,8 @@ Functions</h2></td></tr>
 <p>read the result </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pm</td><td>points to an sps30 pm structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*pm</td><td>pointer to an sps30 pm structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -906,8 +906,8 @@ Functions</h2></td></tr>
 <p>read the data read flag </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*flag</td><td>points to a data ready flag buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*flag</td><td>pointer to a data ready flag buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -943,7 +943,7 @@ Functions</h2></td></tr>
 <p>reset the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -989,8 +989,8 @@ Functions</h2></td></tr>
 <p>set the auto cleaning interval </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">second</td><td>is the interval </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">second</td><td>interval </td></tr>
   </table>
   </dd>
 </dl>
@@ -1037,8 +1037,8 @@ Functions</h2></td></tr>
 <p>set the chip interface </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>is the chip interface </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>chip interface </td></tr>
   </table>
   </dd>
 </dl>
@@ -1072,7 +1072,7 @@ Functions</h2></td></tr>
 <p>enter the sleep mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1108,7 +1108,7 @@ Functions</h2></td></tr>
 <p>start the fan cleaning </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1154,8 +1154,8 @@ Functions</h2></td></tr>
 <p>start the measurement </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>is the data format </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>data format </td></tr>
   </table>
   </dd>
 </dl>
@@ -1191,7 +1191,7 @@ Functions</h2></td></tr>
 <p>stop the measurement </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1227,7 +1227,7 @@ Functions</h2></td></tr>
 <p>wake up the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an sps30 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an sps30 handle structure </td></tr>
   </table>
   </dd>
 </dl>
