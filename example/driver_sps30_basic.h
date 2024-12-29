@@ -58,7 +58,7 @@ extern "C"{
 
 /**
  * @brief     basic example init
- * @param[in] interface is the chip interface
+ * @param[in] interface chip interface
  * @return    status code
  *            - 0 success
  *            - 1 init failed
@@ -77,7 +77,7 @@ uint8_t sps30_basic_deinit(void);
 
 /**
  * @brief      basic example read
- * @param[out] *pm points to a sps30_pm_t structure
+ * @param[out] *pm pointer to a sps30_pm_t structure
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -123,7 +123,7 @@ uint8_t sps30_basic_reset(void);
 
 /**
  * @brief      basic example get the product type
- * @param[out] *type points to a type buffer
+ * @param[out] *type pointer to a type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get product type failed
@@ -133,7 +133,7 @@ uint8_t sps30_basic_get_product_type(char type[9]);
 
 /**
  * @brief      basic example get the serial number
- * @param[out] *sn points to a sn buffer
+ * @param[out] *sn pointer to a sn buffer
  * @return     status code
  *             - 0 success
  *             - 1 get serial number failed
@@ -143,8 +143,8 @@ uint8_t sps30_basic_get_serial_number(char sn[17]);
 
 /**
  * @brief      basic example get the version
- * @param[out] *major points to a major buffer
- * @param[out] *minor points to a minor buffer
+ * @param[out] *major pointer to a major buffer
+ * @param[out] *minor pointer to a minor buffer
  * @return     status code
  *             - 0 success
  *             - 1 get version failed
@@ -154,7 +154,7 @@ uint8_t sps30_basic_get_version(uint8_t *major, uint8_t *minor);
 
 /**
  * @brief      basic example get the status
- * @param[out] *status points to a status buffer
+ * @param[out] *status pointer to a status buffer
  * @return     status code
  *             - 0 success
  *             - 1 get status failed
