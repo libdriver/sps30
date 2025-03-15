@@ -61,7 +61,7 @@ void HAL_MspDeInit(void)
 
 /**
  * @brief     uart hal init
- * @param[in] *huart points to a uart handle
+ * @param[in] *huart pointer to a uart handle
  * @note      none
  */
 void HAL_UART_MspInit(UART_HandleTypeDef *huart)
@@ -118,7 +118,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 
 /**
  * @brief     uart hal deinit
- * @param[in] *huart points to a uart handle
+ * @param[in] *huart pointer to a uart handle
  * @note      none
  */
 void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
@@ -144,37 +144,6 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
         
         /* disable nvic */
         HAL_NVIC_DisableIRQ(USART2_IRQn);
-    }
-}
-
-/**
- * @brief     spi hal init
- * @param[in] *hspi points to a spi handle
- * @note      none
- */
-void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
-{
-    GPIO_InitTypeDef GPIO_InitStruct;
-    
-    if (hspi->Instance == SPI1)
-    {
-        /* enable spi gpio clock */
-        __HAL_RCC_GPIOA_CLK_ENABLE();
-        
-        /* enable spi1 clock */
-        __HAL_RCC_SPI1_CLK_ENABLE();
-        
-        /**
-         * PA5 ------> SPI1_SCK
-         * PA6 ------> SPI1_MISO
-         * PA7 ------> SPI1_MOSI
-         */
-        GPIO_InitStruct.Pin = GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;
-        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-        GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
-        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
     }
 }
 
