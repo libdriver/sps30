@@ -10,7 +10,7 @@
 
 The SPS30 Particulate Matter (PM) sensor is a technological breakthrough in optical PM sensors. Its measurement principle is based on laser scattering and makes use of Sensirion’s innovative contamination-resistance technology. This technology, together with high-quality and long-lasting components, enables precise measurements from its first operation and throughout its lifetime of more than ten years. In addition, Sensirion’s advanced algorithms provide superior precision for different PM types and higher-resolution particle size binning, opening up new possibilities for the detection of different sorts of environmental dust and other particles. With dimensions of only 41 x 41 x 12 mm3, it is also the perfect solution for applications where size is of paramount importance, such as wall-mounted or compact air quality devices.
 
-LibDriver SPS30 is the full function driver of SPS30 launched by LibDriver. It provides air quality reading, automatic cleaning configuration, ID reading and other functions. LibDriver is MISRA compliant.
+LibDriver SPS30 is a full-featured driver of SPS30 launched by LibDriver. It provides air quality reading, automatic cleaning configuration, ID reading and other functions. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
