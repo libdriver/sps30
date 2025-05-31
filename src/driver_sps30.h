@@ -123,7 +123,7 @@ typedef struct sps30_pm_s
     float pm1p0_ug_m3;                /**< mass concentration pm1.0 [μg/m3] */
     float pm2p5_ug_m3;                /**< mass concentration pm2.5 [μg/m3] */
     float pm4p0_ug_m3;                /**< mass concentration pm4.0 [μg/m3] */
-    float pm10_ug_m3;                 /**< mass concentration pm10 [μg/m³] */
+    float pm10_ug_m3;                 /**< mass concentration pm10 [μg/m3] */
     float pm0p5_cm3;                  /**< number concentration pm0.5 [#/cm3] */
     float pm1p0_cm3;                  /**< number concentration pm1.0 [#/cm3] */
     float pm2p5_cm3;                  /**< number concentration pm2.5 [#/cm3] */
@@ -229,7 +229,7 @@ typedef struct sps30_info_s
  * @param[in] FUC pointer to an iic_write_cmd function address
  * @note      none
  */
-#define DRIVER_SPS30_LINK_IIC_WRITE_COMMAND(HANDLE, FUC)    (HANDLE)->iic_write_cmd = FUC
+#define DRIVER_SPS30_LINK_IIC_WRITE_COMMAND(HANDLE, FUC)      (HANDLE)->iic_write_cmd = FUC
 
 /**
  * @brief     link iic_read_cmd function
@@ -237,7 +237,7 @@ typedef struct sps30_info_s
  * @param[in] FUC pointer to an iic_read_cmd function address
  * @note      none
  */
-#define DRIVER_SPS30_LINK_IIC_READ_COMMAND(HANDLE, FUC)     (HANDLE)->iic_read_cmd = FUC
+#define DRIVER_SPS30_LINK_IIC_READ_COMMAND(HANDLE, FUC)       (HANDLE)->iic_read_cmd = FUC
 
 /**
  * @brief     link delay_ms function
