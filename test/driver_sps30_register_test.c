@@ -114,7 +114,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     res = sps30_get_interface(&gs_handle, &interface_check);
     if (res != 0)
     {
-        sps30_interface_debug_print("gps30: set interface failed.\n");
+        sps30_interface_debug_print("sps30: get interface failed.\n");
     
         return 1;
     }
@@ -132,7 +132,7 @@ uint8_t sps30_register_test(sps30_interface_t interface)
     res = sps30_get_interface(&gs_handle, &interface_check);
     if (res != 0)
     {
-        sps30_interface_debug_print("gps30: set interface failed.\n");
+        sps30_interface_debug_print("sps30: get interface failed.\n");
     
         return 1;
     }

@@ -1,3 +1,9 @@
+## 1.0.9 (2025-06-02)
+
+## Bug Fixes
+
+- fix iic delay errors
+
 ## 1.0.8 (2025-05-31)
 
 ## Bug Fixes

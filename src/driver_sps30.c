@@ -688,7 +688,7 @@ uint8_t sps30_read_data_flag(sps30_handle_t *handle, sps30_data_ready_flag_t *fl
         uint8_t buf[3];
         
         memset(buf, 0, sizeof(uint8_t) * 3);                                                                               /* clear the buffer */
-        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_DATA_READY_FLAG, (uint8_t *)buf, 3, 0);       /* read data ready flag command */
+        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_DATA_READY_FLAG, (uint8_t *)buf, 3, 20);      /* read data ready flag command */
         if (res != 0)                                                                                                      /* check result */
         {
             handle->debug_print("sps30: read data ready flag failed.\n");                                                  /* read data ready flag failed */
@@ -902,7 +902,7 @@ uint8_t sps30_start_fan_cleaning(sps30_handle_t *handle)
     }
     else                                                                                                        /* iic */
     {
-        res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_START_FAN_CLEANING, NULL, 0, 5);       /* start the fan cleaning command */
+        res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_START_FAN_CLEANING, NULL, 0, 20);      /* start the fan cleaning command */
         if (res != 0)                                                                                           /* check result */
         {
             handle->debug_print("sps30: start the fan cleaning failed.\n");                                     /* start the fan cleaning failed */
@@ -924,7 +924,7 @@ uint8_t sps30_start_fan_cleaning(sps30_handle_t *handle)
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 second is invalid
- * @note      10 < second < 604800
+ * @note      10 <= second <= 604800
  */
 uint8_t sps30_set_auto_cleaning_interval(sps30_handle_t *handle, uint32_t second)
 {
@@ -1026,7 +1026,6 @@ uint8_t sps30_get_auto_cleaning_interval(sps30_handle_t *handle, uint32_t *secon
     {
         return 3;                                                                                                /* return error */
     }
-
     
     if (handle->iic_uart != 0)                                                                                   /* uart */
     {
@@ -1200,7 +1199,6 @@ uint8_t sps30_get_product_type(sps30_handle_t *handle, char type[9])
     {
         return 3;                                                                                                         /* return error */
     }
-
     
     if (handle->iic_uart != 0)                                                                                            /* uart */
     {
@@ -1215,7 +1213,7 @@ uint8_t sps30_get_product_type(sps30_handle_t *handle, char type[9])
         input_buf[5] = a_sps30_generate_crc(handle, (uint8_t *)&input_buf[1], 4);                                         /* set crc */
         input_buf[6] = 0x7E;                                                                                              /* set stop */
         memset(out_buf, 0, sizeof(uint8_t) * 16);                                                                         /* clear the buffer */
-        res = a_sps30_uart_write_read(handle, (uint8_t *)input_buf, 7, 10, (uint8_t *)out_buf, 16);                       /* write read frame */
+        res = a_sps30_uart_write_read(handle, (uint8_t *)input_buf, 7, 20, (uint8_t *)out_buf, 16);                       /* write read frame */
         if (res != 0)                                                                                                     /* check result */
         {
             handle->debug_print("sps30: write read failed.\n");                                                           /* write read failed */
@@ -1239,7 +1237,7 @@ uint8_t sps30_get_product_type(sps30_handle_t *handle, char type[9])
         uint8_t buf[12];
         
         memset(buf, 0, sizeof(uint8_t) * 12);                                                                             /* clear the buffer */
-        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_PRODUCT_TYPE, (uint8_t *)buf, 12, 0);        /* read product type command */
+        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_PRODUCT_TYPE, (uint8_t *)buf, 12, 20);       /* read product type command */
         if (res != 0)                                                                                                     /* check result */
         {
             handle->debug_print("sps30: read product type failed.\n");                                                    /* read product type failed */
@@ -1292,7 +1290,6 @@ uint8_t sps30_get_serial_number(sps30_handle_t *handle, char sn[17])
     {
         return 3;                                                                                                         /* return error */
     }
-
     
     if (handle->iic_uart != 0)                                                                                            /* uart */
     {
@@ -1331,7 +1328,7 @@ uint8_t sps30_get_serial_number(sps30_handle_t *handle, char sn[17])
         uint8_t buf[24];
         
         memset(buf, 0, sizeof(uint8_t) * 24);                                                                             /* clear the buffer */
-        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_SERIAL_NUMBER, (uint8_t *)buf, 24, 0);       /* read serial number command */
+        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_SERIAL_NUMBER, (uint8_t *)buf, 24, 20);      /* read serial number command */
         if (res != 0)                                                                                                     /* check result */
         {
             handle->debug_print("sps30: read serial number failed.\n");                                                   /* read serial number failed */
@@ -1386,7 +1383,6 @@ uint8_t sps30_get_version(sps30_handle_t *handle, uint8_t *major, uint8_t *minor
     {
         return 3;                                                                                                  /* return error */
     }
-
     
     if (handle->iic_uart != 0)                                                                                     /* uart */
     {
@@ -1422,8 +1418,8 @@ uint8_t sps30_get_version(sps30_handle_t *handle, uint8_t *major, uint8_t *minor
     }
     else                                                                                                           /* iic */
     {
-        memset(buf, 0, sizeof(uint8_t) * 2);                                                                       /* clear the buffer */
-        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_VERSION, (uint8_t *)buf, 3, 0);       /* read version command */
+        memset(buf, 0, sizeof(uint8_t) * 3);                                                                       /* clear the buffer */
+        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_VERSION, (uint8_t *)buf, 3, 20);      /* read version command */
         if (res != 0)                                                                                              /* check result */
         {
             handle->debug_print("sps30: read version failed.\n");                                                  /* read version failed */
@@ -1466,7 +1462,6 @@ uint8_t sps30_get_device_status(sps30_handle_t *handle, uint32_t *status)
     {
         return 3;                                                                                                /* return error */
     }
-
     
     if (handle->iic_uart != 0)                                                                                   /* uart */
     {
@@ -1507,7 +1502,7 @@ uint8_t sps30_get_device_status(sps30_handle_t *handle, uint32_t *status)
         
         memset(buf, 0, sizeof(uint8_t) * 6);                                                                     /* clear the buffer */
         res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_DEVICE_STATUS_REG, 
-                              (uint8_t *)buf, 6, 0);                                                             /* get device status command */
+                              (uint8_t *)buf, 6, 20);                                                            /* get device status command */
         if (res != 0)                                                                                            /* check result */
         {
             handle->debug_print("sps30: get device status failed.\n");                                           /* get device status failed */
@@ -1589,7 +1584,7 @@ uint8_t sps30_clear_device_status(sps30_handle_t *handle)
     }
     else                                                                                                             /* iic */
     {
-        res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_CLEAR_DEVICE_STATUS_REG, NULL, 0, 5);       /* clear device status command */
+        res = a_sps30_iic_write(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_CLEAR_DEVICE_STATUS_REG, NULL, 0, 20);      /* clear device status command */
         if (res != 0)                                                                                                /* check result */
         {
             handle->debug_print("sps30: clear device status failed.\n");                                             /* clear device status failed */
@@ -1698,7 +1693,6 @@ uint8_t sps30_read(sps30_handle_t *handle, sps30_pm_t *pm)
     {
         return 3;                                                                                                               /* return error */
     }
-
     
     if (handle->iic_uart != 0)                                                                                                  /* uart */
     {
@@ -1815,7 +1809,7 @@ uint8_t sps30_read(sps30_handle_t *handle, sps30_pm_t *pm)
         uint8_t check[3];
         
         memset(check, 0, sizeof(uint8_t) * 3);                                                                                  /* clear the buffer */
-        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_DATA_READY_FLAG, (uint8_t *)check, 3, 0);          /* read data ready flag command */
+        res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_DATA_READY_FLAG, (uint8_t *)check, 3, 20);         /* read data ready flag command */
         if (res != 0)                                                                                                           /* check result */
         {
             handle->debug_print("sps30: read data ready flag failed.\n");                                                       /* read data ready flag failed */
@@ -1840,7 +1834,7 @@ uint8_t sps30_read(sps30_handle_t *handle, sps30_pm_t *pm)
             uint8_t buf[60];
             
             memset(buf, 0, sizeof(uint8_t) * 60);                                                                               /* clear the buffer */
-            res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_MEASURED_VALUES, (uint8_t *)buf, 60, 0);       /* read measured values command */
+            res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_MEASURED_VALUES, (uint8_t *)buf, 60, 20);      /* read measured values command */
             if (res != 0)                                                                                                       /* check result */
             {
                 handle->debug_print("sps30: read measured values failed.\n");                                                   /* read measured values failed */
@@ -1892,7 +1886,7 @@ uint8_t sps30_read(sps30_handle_t *handle, sps30_pm_t *pm)
             uint8_t buf[30];
             
             memset(buf, 0, sizeof(uint8_t) * 30);                                                                               /* clear the buffer */
-            res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_MEASURED_VALUES, (uint8_t *)buf, 30, 0);       /* read measured values command */
+            res = a_sps30_iic_read(handle, SPS30_ADDRESS, SPS30_IIC_COMMAND_READ_MEASURED_VALUES, (uint8_t *)buf, 30, 20);      /* read measured values command */
             if (res != 0)                                                                                                       /* check result */
             {
                 handle->debug_print("sps30: read measured values failed.\n");                                                   /* read measured values failed */
