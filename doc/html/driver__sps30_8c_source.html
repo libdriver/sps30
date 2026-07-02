@@ -840,7 +840,7 @@ $(function(){initNavTree('driver__sps30_8c_source.html','',''); });
 <div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>    {</div>
 <div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>        <span class="keywordflow">return</span> 3;                                                                                                <span class="comment">/* return error */</span></div>
 <div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>    }</div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>    <span class="keywordflow">if</span> ((second &lt; 10) || (second &gt; 604800))                                                                      <span class="comment">/* check second */</span></div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>    <span class="keywordflow">if</span> ((second != 0) &amp;&amp; ((second &lt; 10) || (second &gt; 604800)))                                                   <span class="comment">/* check second */</span></div>
 <div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>    {</div>
 <div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>        handle-&gt;<a class="code hl_variable" href="structsps30__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b">debug_print</a>(<span class="stringliteral">&quot;sps30: second is invalid.\n&quot;</span>);                                                      <span class="comment">/* second is invalid */</span></div>
 <div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>           </div>
